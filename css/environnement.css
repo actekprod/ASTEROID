@@ -1,186 +1,664 @@
 /* =========================================================
-   PAGE ENVIRONNEMENT
-   ASTÉROÏD DESTROYER
-   DATABASE // ENVIRONMENT
+   ENVIRONMENT PAGE
+   ASTÉROÏD destroyer
    ========================================================= */
 
 
 /* =========================================================
-   PAGE PRINCIPALE
+   VARIABLES
    ========================================================= */
 
-#stages-page {
-    position: relative;
+#environment-page {
+    --environment-green: #7cff9b;
+    --environment-green-soft: rgba(124, 255, 155, 0.55);
+    --environment-green-faint: rgba(124, 255, 155, 0.08);
 
+    --environment-red: #ff4d5a;
+    --environment-red-soft: rgba(255, 77, 90, 0.5);
+
+    --environment-cyan: #62eaff;
+    --environment-yellow: #e6ff75;
+
+    --environment-bg: #050708;
+    --environment-panel: rgba(7, 12, 14, 0.94);
+    --environment-panel-light: rgba(11, 18, 20, 0.92);
+
+    --environment-border: rgba(124, 255, 155, 0.22);
+    --environment-border-strong: rgba(124, 255, 155, 0.55);
+
+    --environment-text: #d8e6dc;
+    --environment-text-soft: #81938a;
+
+    --environment-width: 1320px;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+#environment-page {
+    position: relative;
     width: 100%;
+    min-height: 100vh;
+    padding: 110px 0 160px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(124, 255, 155, 0.055),
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #030506 0%,
+            #050708 45%,
+            #030506 100%
+        );
+
+    color: var(--environment-text);
 
     overflow: hidden;
 }
 
 
-#stages-page .section-content {
-    position: relative;
-
-    width: 100%;
-
-    max-width: 1250px;
-
-    margin: 0 auto;
-
-    padding: 60px 35px 100px;
-}
-
-
 /* =========================================================
-   EN-TÊTE DE PAGE
+   GRILLE TECHNIQUE DE FOND
    ========================================================= */
 
-#stages-page .section-label {
-    display: block;
-
-    margin-bottom: 15px;
-
-    color: var(--color-cyan);
-
-    font-size: 0.65rem;
-
-    font-weight: 800;
-
-    letter-spacing: 0.22em;
-
-    text-transform: uppercase;
-
-    text-shadow:
-        0 0 10px rgba(0, 229, 255, 0.35);
-}
-
-
-#stages-page .section-content > h1 {
-    position: relative;
-
-    margin: 0 0 20px;
-
-    color: var(--color-white);
-
-    font-size: clamp(
-        3rem,
-        7vw,
-        5.5rem
-    );
-
-    font-weight: 800;
-
-    line-height: 0.95;
-
-    letter-spacing: -0.045em;
-
-    text-shadow:
-        0 0 15px rgba(0, 229, 255, 0.35),
-        0 0 45px rgba(0, 229, 255, 0.12);
-}
-
-
-#stages-page .section-content > h1::after {
+#environment-page::before {
     content: "";
+    position: absolute;
+    inset: 0;
 
-    display: block;
+    pointer-events: none;
 
-    width: 180px;
+    opacity: 0.18;
 
-    height: 2px;
-
-    margin-top: 25px;
-
-    background:
+    background-image:
+        linear-gradient(
+            rgba(124, 255, 155, 0.035) 1px,
+            transparent 1px
+        ),
         linear-gradient(
             90deg,
-            var(--color-cyan),
-            transparent
+            rgba(124, 255, 155, 0.035) 1px,
+            transparent 1px
         );
 
-    box-shadow:
-        0 0 12px rgba(0, 229, 255, 0.5);
-}
+    background-size:
+        70px 70px,
+        70px 70px;
 
-
-#stages-page .section-content > p:not(.section-label) {
-    max-width: 720px;
-
-    margin: 0 0 55px;
-
-    color: var(--color-text-muted);
-
-    font-size: 1rem;
-
-    line-height: 1.85;
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
 }
 
 
 /* =========================================================
-   BASE DE DONNÉES ENVIRONNEMENT
+   LIGNES DE SCAN
    ========================================================= */
 
-.stages-grid {
-    position: relative;
+#environment-page::after {
+    content: "";
 
-    display: flex;
+    position: absolute;
+    inset: 0;
 
-    flex-direction: column;
+    pointer-events: none;
 
-    width: 100%;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 4px,
+            rgba(124, 255, 155, 0.012) 5px
+        );
 
-    gap: 45px;
-
-    margin: 0;
-
-    padding: 0;
-
-    counter-reset: environment-sector;
+    opacity: 0.35;
 }
 
 
 /* =========================================================
-   CARTE ENVIRONNEMENT
+   CONTENU PRINCIPAL
    ========================================================= */
 
-.stage-card {
+#environment-page > .section-content {
     position: relative;
+    z-index: 2;
 
-    display: grid;
+    width: min(
+        calc(100% - 80px),
+        var(--environment-width)
+    );
 
-    grid-template-columns:
-        minmax(360px, 46%)
-        minmax(0, 1fr);
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   CLASSIFIED HEADER
+   ========================================================= */
+
+#environment-page .classified-header {
+    position: relative;
 
     width: 100%;
 
-    min-height: 310px;
+    margin-bottom: 70px;
+    padding: 26px 30px 32px;
 
-    margin: 0;
-
-    padding: 0;
-
-    counter-increment: environment-sector;
-
-    border:
-        1px solid var(--color-border);
-
-    border-left:
-        3px solid var(--color-cyan);
+    border: 1px solid var(--environment-border);
 
     background:
         linear-gradient(
             135deg,
-            rgba(0, 229, 255, 0.045),
-            rgba(5, 9, 20, 0.82) 45%,
-            rgba(2, 6, 14, 0.96)
-        );
+            rgba(124, 255, 155, 0.055),
+            transparent 55%
+        ),
+        rgba(3, 8, 9, 0.88);
 
     box-shadow:
-        0 20px 55px rgba(0, 0, 0, 0.25),
-        inset 0 0 45px rgba(0, 229, 255, 0.018);
+        0 0 35px rgba(0, 0, 0, 0.35),
+        inset 0 0 30px rgba(124, 255, 155, 0.018);
+}
+
+
+/* =========================================================
+   HEADER CORNER
+   ========================================================= */
+
+#environment-page .classified-header::before,
+#environment-page .classified-header::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    pointer-events: none;
+}
+
+#environment-page .classified-header::before {
+    top: -1px;
+    left: -1px;
+
+    border-top: 2px solid var(--environment-green);
+    border-left: 2px solid var(--environment-green);
+}
+
+#environment-page .classified-header::after {
+    right: -1px;
+    bottom: -1px;
+
+    border-right: 2px solid var(--environment-green);
+    border-bottom: 2px solid var(--environment-green);
+}
+
+
+/* =========================================================
+   TOPLINE
+   ========================================================= */
+
+#environment-page .classified-topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+
+    padding-bottom: 18px;
+    margin-bottom: 28px;
+
+    border-bottom: 1px solid rgba(124, 255, 155, 0.12);
+
+    color: var(--environment-green);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+#environment-page .classified-header .section-label {
+    margin: 0 0 12px;
+
+    color: var(--environment-cyan);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+#environment-page .classified-header h1 {
+    margin: 0;
+
+    color: #f1fff4;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: clamp(42px, 6vw, 82px);
+
+    line-height: 0.95;
+
+    font-weight: 800;
+
+    letter-spacing: -0.045em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 22px rgba(124, 255, 155, 0.12);
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+#environment-page .classified-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 28px;
+
+    color: var(--environment-green);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+}
+
+
+/* =========================================================
+   STATUS DOT
+   ========================================================= */
+
+#environment-page .status-dot {
+    width: 8px;
+    height: 8px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    background: var(--environment-green);
+
+    box-shadow:
+        0 0 6px var(--environment-green),
+        0 0 16px var(--environment-green);
+
+    animation: environmentStatusPulse 1.8s infinite;
+}
+
+
+@keyframes environmentStatusPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.45;
+        transform: scale(0.75);
+    }
+}
+
+
+/* =========================================================
+   DOSSIER
+   ========================================================= */
+
+#environment-page .game-dossier {
+    position: relative;
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   DOSSIER META
+   ========================================================= */
+
+#environment-page .dossier-meta {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    margin-bottom: 55px;
+
+    border-top: 1px solid var(--environment-border);
+    border-bottom: 1px solid var(--environment-border);
+}
+
+
+#environment-page .dossier-meta > div {
+    min-height: 82px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 15px 20px;
+
+    border-right: 1px solid var(--environment-border);
+}
+
+
+#environment-page .dossier-meta > div:last-child {
+    border-right: 0;
+}
+
+
+#environment-page .dossier-meta span {
+    color: var(--environment-text-soft);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+}
+
+
+#environment-page .dossier-meta strong {
+    color: var(--environment-green);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 13px;
+
+    letter-spacing: 0.08em;
+}
+
+
+#environment-page .dossier-meta .danger-text {
+    color: var(--environment-red);
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+#environment-page .dossier-intro {
+    position: relative;
+
+    max-width: 850px;
+
+    margin: 0 auto 100px;
+
+    padding: 34px 40px;
+
+    border-left: 2px solid var(--environment-green);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(124, 255, 155, 0.045),
+            transparent
+        );
+}
+
+
+#environment-page .dossier-number {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: var(--environment-cyan);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+}
+
+
+#environment-page .dossier-intro h2 {
+    margin: 0 0 20px;
+
+    color: #ecfff1;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: clamp(24px, 3vw, 38px);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.02em;
+}
+
+
+#environment-page .dossier-intro p {
+    max-width: 760px;
+
+    margin: 0 0 14px;
+
+    color: var(--environment-text-soft);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+#environment-page .dossier-intro .lead-text {
+    color: #b8cfc0;
+
+    font-size: 14px;
+}
+
+
+#environment-page .dossier-intro .warning-text {
+    margin-top: 25px;
+
+    color: var(--environment-red);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   ENVIRONMENT ENTRIES
+   ========================================================= */
+
+#environment-page .environment-entry {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 380px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    column-gap: 100px;
+
+    margin-bottom: 110px;
+
+    padding: 50px 55px;
+
+    border: 1px solid var(--environment-border);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 255, 155, 0.025),
+            transparent 45%
+        ),
+        rgba(5, 10, 11, 0.91);
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.28);
 
     overflow: hidden;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* =========================================================
+   HOVER ENTRY
+   ========================================================= */
+
+#environment-page .environment-entry:hover {
+    border-color: var(--environment-border-strong);
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.38),
+        0 0 35px rgba(124, 255, 155, 0.05);
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   ENTRY DECORATION
+   ========================================================= */
+
+#environment-page .environment-entry::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--environment-green),
+            transparent
+        );
+
+    opacity: 0.65;
+}
+
+
+#environment-page .environment-left::before {
+    left: 0;
+}
+
+
+#environment-page .environment-right::before {
+    right: 0;
+}
+
+
+/* =========================================================
+   ALTERNANCE
+   VIDÉO GAUCHE / TEXTE DROITE
+   ========================================================= */
+
+#environment-page .environment-left {
+    grid-template-areas:
+        "video info";
+}
+
+
+/* =========================================================
+   ALTERNANCE
+   TEXTE GAUCHE / VIDÉO DROITE
+   ========================================================= */
+
+#environment-page .environment-right {
+    grid-template-areas:
+        "info video";
+}
+
+
+/* =========================================================
+   VIDÉO
+   ========================================================= */
+
+#environment-page .environment-video {
+    grid-area: video;
+
+    width: 320px;
+    height: auto;
+
+    justify-self: center;
+
+    position: relative;
+
+    padding: 8px;
+
+    border: 1px solid var(--environment-border-strong);
+
+    background:
+        #020405;
+
+    box-shadow:
+        0 0 0 1px rgba(124, 255, 155, 0.035),
+        0 0 30px rgba(124, 255, 155, 0.055);
 
     transition:
         transform 0.35s ease,
@@ -189,809 +667,435 @@
 }
 
 
-.stage-card::after {
-    content: "";
+#environment-page .environment-entry:hover .environment-video {
+    transform: translateY(-4px);
 
-    position: absolute;
-
-    top: 0;
-    right: 0;
-
-    width: 180px;
-    height: 180px;
-
-    border:
-        1px solid rgba(0, 229, 255, 0.045);
-
-    border-radius: 50%;
-
-    transform:
-        translate(45%, -45%);
-
-    pointer-events: none;
-}
-
-
-.stage-card:hover {
-    transform:
-        translateY(-5px);
-
-    border-color:
-        var(--color-border-strong);
+    border-color: rgba(124, 255, 155, 0.8);
 
     box-shadow:
-        0 25px 65px rgba(0, 0, 0, 0.35),
-        0 0 30px rgba(0, 229, 255, 0.07),
-        inset 0 0 45px rgba(0, 229, 255, 0.025);
+        0 0 30px rgba(124, 255, 155, 0.09),
+        0 0 70px rgba(124, 255, 155, 0.035);
 }
 
 
 /* =========================================================
-   NUMÉRO DU SECTEUR
+   VIDEO HEADER
    ========================================================= */
 
-.stage-card::before {
-    content:
-        "SECTOR // 0" counter(environment-sector);
+#environment-page .environment-video-header {
+    width: 100%;
 
-    position: absolute;
-
-    top: 15px;
-    left: 15px;
-
-    z-index: 20;
-
-    padding: 7px 10px;
-
-    border:
-        1px solid rgba(0, 229, 255, 0.25);
-
-    background:
-        rgba(2, 7, 17, 0.88);
-
-    color:
-        var(--color-cyan);
-
-    font-size: 0.55rem;
-
-    font-weight: 800;
-
-    letter-spacing: 0.17em;
-
-    box-shadow:
-        0 0 12px rgba(0, 229, 255, 0.06);
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   VIDÉO
-   ========================================================= */
-
-.stage-card-video {
-    position: relative;
+    height: 30px;
 
     display: flex;
 
     align-items: center;
+    justify-content: space-between;
 
-    justify-content: center;
+    gap: 10px;
 
-    width: 100%;
+    padding: 0 8px;
 
-    height: 310px;
+    border-bottom: 1px solid rgba(124, 255, 155, 0.2);
 
-    min-height: 310px;
+    color: var(--environment-green);
 
-    padding: 25px;
+    font-family:
+        "Courier New",
+        monospace;
 
-    background:
-        #01050c;
+    font-size: 8px;
+    font-weight: 700;
 
-    overflow: hidden;
+    letter-spacing: 0.1em;
+
+    white-space: nowrap;
 }
 
 
 /* =========================================================
-   GRILLE TECHNIQUE SUR LA VIDÉO
+   VIDEO
+   EXACTEMENT 180 x 320
    ========================================================= */
 
-.stage-card-video::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 14px;
-
-    z-index: 1;
-
-    border:
-        1px solid rgba(0, 229, 255, 0.12);
-
-    background:
-        linear-gradient(
-            rgba(0, 229, 255, 0.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(0, 229, 255, 0.025) 1px,
-            transparent 1px
-        );
-
-    background-size:
-        25px 25px;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   LIGNE LUMINEUSE VIDÉO
-   ========================================================= */
-
-.stage-card-video::after {
-    content: "";
-
-    position: absolute;
-
-    left: 25px;
-    right: 25px;
-
-    top: 25px;
-
-    z-index: 5;
-
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--color-cyan),
-            transparent
-        );
-
-    box-shadow:
-        0 0 12px rgba(0, 229, 255, 0.8);
-
-    opacity: 0.7;
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   ÉLÉMENT VIDÉO
-   ========================================================= */
-
-.stage-card-video video {
-    position: relative;
-
-    z-index: 3;
-
+#environment-page .environment-video video {
     display: block;
 
-    width: 100%;
+    width: 180px;
+    height: 320px;
 
-    height: 260px;
-
-    max-width: 100%;
-
-    max-height: 260px;
-
-    margin: 0;
-
-    padding: 0;
+    margin: 10px auto;
 
     object-fit: cover;
 
-    border:
-        1px solid rgba(0, 229, 255, 0.18);
+    background: #000;
 
-    background:
-        #000;
+    border: 1px solid rgba(124, 255, 155, 0.12);
 
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.55),
-        0 0 20px rgba(0, 229, 255, 0.035);
+        inset 0 0 20px rgba(0, 0, 0, 0.8);
 
-    filter:
-        brightness(0.88)
-        contrast(1.08)
-        saturate(0.82);
-
-    transition:
-        transform 0.45s ease,
-        filter 0.45s ease,
-        box-shadow 0.45s ease;
-}
-
-
-.stage-card:hover .stage-card-video video {
-    transform:
-        scale(1.025);
-
-    filter:
-        brightness(1)
-        contrast(1.1)
-        saturate(0.95);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.6),
-        0 0 25px rgba(0, 229, 255, 0.08);
+    cursor: pointer;
 }
 
 
 /* =========================================================
-   ZONE INFORMATIONS
+   VIDEO FOOTER
    ========================================================= */
 
-.stage-card > h2 {
-    position: relative;
+#environment-page .environment-video-footer {
+    width: 100%;
+
+    min-height: 28px;
 
     display: flex;
 
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 
-    justify-content: center;
+    padding: 0 8px;
 
-    min-width: 0;
+    border-top: 1px solid rgba(124, 255, 155, 0.2);
 
-    min-height: 310px;
+    color: var(--environment-text-soft);
 
-    margin: 0;
+    font-family:
+        "Courier New",
+        monospace;
 
-    padding: 50px;
+    font-size: 8px;
 
-    border-left:
-        1px solid var(--color-border);
+    letter-spacing: 0.08em;
+}
 
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0, 229, 255, 0.015),
-            rgba(0, 0, 0, 0.08)
-        );
 
-    color:
-        var(--color-white);
+#environment-page .environment-video-footer span:last-child {
+    color: var(--environment-green);
+}
 
-    font-size: clamp(
-        1.7rem,
-        3vw,
-        2.8rem
-    );
 
-    font-weight: 800;
+/* =========================================================
+   VIDEO CORNERS
+   ========================================================= */
+
+#environment-page .environment-video::before,
+#environment-page .environment-video::after {
+    content: "";
+
+    position: absolute;
+
+    width: 12px;
+    height: 12px;
+
+    z-index: 3;
+
+    pointer-events: none;
+}
+
+
+#environment-page .environment-video::before {
+    top: -1px;
+    left: -1px;
+
+    border-top: 2px solid var(--environment-green);
+    border-left: 2px solid var(--environment-green);
+}
+
+
+#environment-page .environment-video::after {
+    right: -1px;
+    bottom: -1px;
+
+    border-right: 2px solid var(--environment-green);
+    border-bottom: 2px solid var(--environment-green);
+}
+
+
+/* =========================================================
+   INFORMATIONS
+   ========================================================= */
+
+#environment-page .environment-info {
+    grid-area: info;
+
+    width: 100%;
+
+    max-width: 480px;
+
+    align-self: center;
+}
+
+
+/* =========================================================
+   NUMÉRO
+   ========================================================= */
+
+#environment-page .environment-number {
+    display: inline-block;
+
+    margin-bottom: 14px;
+
+    padding: 6px 9px;
+
+    border: 1px solid rgba(98, 234, 255, 0.28);
+
+    color: var(--environment-cyan);
+
+    background: rgba(98, 234, 255, 0.035);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   TITRE ENVIRONNEMENT
+   ========================================================= */
+
+#environment-page .environment-info h2 {
+    margin: 0 0 18px;
+
+    color: #eaffef;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: clamp(23px, 3vw, 36px);
 
     line-height: 1.05;
 
-    letter-spacing: -0.03em;
+    font-weight: 800;
 
-    text-shadow:
-        0 0 15px rgba(0, 229, 255, 0.12);
+    letter-spacing: -0.025em;
 
-    overflow: hidden;
-
-    transition:
-        color 0.3s ease,
-        text-shadow 0.3s ease;
-}
-
-
-.stage-card:hover > h2 {
-    color:
-        var(--color-white);
-
-    text-shadow:
-        0 0 20px rgba(0, 229, 255, 0.22);
+    text-transform: uppercase;
 }
 
 
 /* =========================================================
-   INFORMATIONS TECHNIQUES
+   TEXTE
    ========================================================= */
 
-.stage-card > h2::before {
-    content:
-        "ENVIRONMENT DATABASE // SECTOR 0" counter(environment-sector);
+#environment-page .environment-info p {
+    margin: 0 0 25px;
 
-    display: block;
+    color: #82958a;
 
-    margin-bottom: 20px;
+    font-family:
+        "Courier New",
+        monospace;
 
-    color:
-        var(--color-cyan);
+    font-size: 12px;
 
-    font-size: 0.58rem;
-
-    font-weight: 800;
-
-    line-height: 1;
-
-    letter-spacing: 0.2em;
-
-    text-shadow:
-        0 0 10px rgba(0, 229, 255, 0.4);
+    line-height: 1.85;
 }
 
 
-.stage-card > h2::after {
-    content:
-        "STATUS : ONLINE  //  ANALYSIS : ACTIVE";
+/* =========================================================
+   DONNÉES
+   ========================================================= */
 
-    display: block;
+#environment-page .environment-data {
+    display: flex;
 
-    margin-top: 25px;
+    flex-wrap: wrap;
+
+    gap: 8px;
 
     padding-top: 18px;
 
-    border-top:
-        1px solid rgba(0, 229, 255, 0.12);
+    border-top: 1px solid rgba(124, 255, 155, 0.15);
+}
 
-    color:
-        var(--color-text-muted);
 
-    font-size: 0.52rem;
+#environment-page .environment-data span {
+    display: flex;
 
-    font-weight: 700;
+    align-items: center;
 
-    line-height: 1.6;
+    gap: 7px;
 
-    letter-spacing: 0.14em;
+    padding: 7px 9px;
+
+    border: 1px solid rgba(124, 255, 155, 0.12);
+
+    color: #64766d;
+
+    background: rgba(124, 255, 155, 0.025);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 0.08em;
+
+    white-space: nowrap;
+}
+
+
+#environment-page .environment-data strong {
+    color: var(--environment-green);
+
+    font-size: 8px;
 }
 
 
 /* =========================================================
-   BALAYAGE VISUEL
+   RISQUE CRITIQUE
    ========================================================= */
 
-.stage-card-video {
-    isolation: isolate;
-}
-
-
-.stage-card-video video {
-    clip-path:
-        inset(0);
-}
-
-
-.stage-card:hover .stage-card-video::after {
-    animation:
-        environment-scan 1.8s linear infinite;
-}
-
-
-@keyframes environment-scan {
-
-    0% {
-        top: 25px;
-
-        opacity: 0.25;
-    }
-
-    50% {
-        top: calc(100% - 25px);
-
-        opacity: 0.8;
-    }
-
-    100% {
-        top: 25px;
-
-        opacity: 0.25;
-    }
-
+#environment-page .environment-right .environment-data span:last-child strong,
+#environment-page .environment-left .environment-data span:last-child strong {
+    color: var(--environment-yellow);
 }
 
 
 /* =========================================================
-   TRAITS DÉCORATIFS
+   ENVIRONNEMENT FINAL
    ========================================================= */
 
-.stage-card:nth-child(odd) {
-    border-left:
-        3px solid var(--color-cyan);
-}
+#environment-page .environment-final {
+    margin-bottom: 0;
 
+    border-color: rgba(255, 77, 90, 0.35);
 
-.stage-card:nth-child(even) {
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(360px, 46%);
-
-    border-left:
-        1px solid var(--color-border);
-
-    border-right:
-        3px solid var(--color-cyan);
-}
-
-
-/* =========================================================
-   VIDÉO À DROITE POUR LES CARTES PAIRES
-   ========================================================= */
-
-.stage-card:nth-child(even) .stage-card-video {
-    order: 2;
-}
-
-
-.stage-card:nth-child(even) > h2 {
-    order: 1;
-
-    border-left:
-        none;
-
-    border-right:
-        1px solid var(--color-border);
-}
-
-
-/* =========================================================
-   NUMÉRO À DROITE POUR LES CARTES PAIRES
-   ========================================================= */
-
-.stage-card:nth-child(even)::before {
-    left: auto;
-
-    right: 15px;
-}
-
-
-/* =========================================================
-   INDICATEUR D'ACTIVITÉ
-   ========================================================= */
-
-.stage-card > h2 {
-    isolation: isolate;
-}
-
-
-.stage-card > h2 {
-    background-image:
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(0, 229, 255, 0.018) 50%,
-            transparent 100%
-        );
-}
-
-
-/* =========================================================
-   COINS TECHNIQUES
-   ========================================================= */
-
-.stage-card-video {
-    border-right:
-        1px solid rgba(0, 229, 255, 0.08);
-}
-
-
-.stage-card:nth-child(even) .stage-card-video {
-    border-right:
-        none;
-
-    border-left:
-        1px solid rgba(0, 229, 255, 0.08);
-}
-
-
-/* =========================================================
-   ÉTAT VIDÉO
-   ========================================================= */
-
-.stage-card-video video::-webkit-media-controls-panel {
     background:
         linear-gradient(
+            135deg,
+            rgba(255, 77, 90, 0.035),
+            transparent 50%
+        ),
+        rgba(10, 5, 6, 0.94);
+}
+
+
+#environment-page .environment-final::before {
+    background:
+        linear-gradient(
+            to bottom,
             transparent,
-            rgba(0, 0, 0, 0.8)
+            var(--environment-red),
+            transparent
         );
 }
 
 
-.stage-card-video video::-webkit-media-controls-play-button {
-    filter:
-        brightness(1.4)
-        saturate(0.5);
+#environment-page .environment-final .environment-video {
+    border-color: rgba(255, 77, 90, 0.5);
+
+    box-shadow:
+        0 0 30px rgba(255, 77, 90, 0.05);
+}
+
+
+#environment-page .environment-final .environment-number {
+    color: var(--environment-red);
+
+    border-color: rgba(255, 77, 90, 0.35);
+
+    background: rgba(255, 77, 90, 0.04);
 }
 
 
 /* =========================================================
-   EFFET DE LUMIÈRE AU SURVOL
+   SÉPARATION ENTRE SECTEURS
    ========================================================= */
 
-.stage-card:hover {
-    border-top-color:
-        rgba(0, 229, 255, 0.35);
+#environment-page .environment-entry:not(:last-child)::after {
+    content: "";
 
-    border-bottom-color:
-        rgba(0, 229, 255, 0.25);
-}
+    position: absolute;
 
+    left: 50%;
 
-.stage-card:hover::after {
-    border-color:
-        rgba(0, 229, 255, 0.08);
-}
+    bottom: -56px;
 
+    width: 1px;
+    height: 42px;
 
-/* =========================================================
-   27 SECTEURS
-   ========================================================= */
+    background:
+        linear-gradient(
+            to bottom,
+            var(--environment-border-strong),
+            transparent
+        );
 
-.stage-card:nth-child(1) {
-    --sector-delay: 0s;
-}
-
-
-.stage-card:nth-child(2) {
-    --sector-delay: 0.05s;
-}
-
-
-.stage-card:nth-child(3) {
-    --sector-delay: 0.1s;
-}
-
-
-.stage-card:nth-child(4) {
-    --sector-delay: 0.15s;
-}
-
-
-.stage-card:nth-child(5) {
-    --sector-delay: 0.2s;
-}
-
-
-.stage-card:nth-child(6) {
-    --sector-delay: 0.25s;
-}
-
-
-.stage-card:nth-child(7) {
-    --sector-delay: 0.3s;
-}
-
-
-.stage-card:nth-child(8) {
-    --sector-delay: 0.35s;
-}
-
-
-.stage-card:nth-child(9) {
-    --sector-delay: 0.4s;
-}
-
-
-.stage-card:nth-child(10) {
-    --sector-delay: 0.45s;
-}
-
-
-.stage-card:nth-child(11) {
-    --sector-delay: 0.5s;
-}
-
-
-.stage-card:nth-child(12) {
-    --sector-delay: 0.55s;
-}
-
-
-.stage-card:nth-child(13) {
-    --sector-delay: 0.6s;
-}
-
-
-.stage-card:nth-child(14) {
-    --sector-delay: 0.65s;
-}
-
-
-.stage-card:nth-child(15) {
-    --sector-delay: 0.7s;
-}
-
-
-.stage-card:nth-child(16) {
-    --sector-delay: 0.75s;
-}
-
-
-.stage-card:nth-child(17) {
-    --sector-delay: 0.8s;
-}
-
-
-.stage-card:nth-child(18) {
-    --sector-delay: 0.85s;
-}
-
-
-.stage-card:nth-child(19) {
-    --sector-delay: 0.9s;
-}
-
-
-.stage-card:nth-child(20) {
-    --sector-delay: 0.95s;
-}
-
-
-.stage-card:nth-child(21) {
-    --sector-delay: 1s;
-}
-
-
-.stage-card:nth-child(22) {
-    --sector-delay: 1.05s;
-}
-
-
-.stage-card:nth-child(23) {
-    --sector-delay: 1.1s;
-}
-
-
-.stage-card:nth-child(24) {
-    --sector-delay: 1.15s;
-}
-
-
-.stage-card:nth-child(25) {
-    --sector-delay: 1.2s;
-}
-
-
-.stage-card:nth-child(26) {
-    --sector-delay: 1.25s;
-}
-
-
-.stage-card:nth-child(27) {
-    --sector-delay: 1.3s;
+    transform: translateX(-50%);
 }
 
 
 /* =========================================================
-   TABLETTE
+   RESPONSIVE TABLETTE
    ========================================================= */
 
 @media (max-width: 1000px) {
 
-    #stages-page .section-content {
-        padding:
-            50px 25px 80px;
+    #environment-page {
+        padding-top: 90px;
     }
 
 
-    .stage-card {
+    #environment-page > .section-content {
+        width: min(
+            calc(100% - 40px),
+            760px
+        );
+    }
+
+
+    #environment-page .dossier-meta {
         grid-template-columns:
-            minmax(300px, 45%)
-            minmax(0, 1fr);
+            repeat(2, 1fr);
     }
 
 
-    .stage-card:nth-child(even) {
-        grid-template-columns:
-            minmax(0, 1fr)
-            minmax(300px, 45%);
+    #environment-page .dossier-meta > div:nth-child(2) {
+        border-right: 0;
     }
 
 
-    .stage-card-video {
-        height: 280px;
-
-        min-height: 280px;
-
-        padding: 20px;
+    #environment-page .dossier-meta > div:nth-child(-n + 2) {
+        border-bottom: 1px solid var(--environment-border);
     }
 
 
-    .stage-card-video video {
-        height: 240px;
+    #environment-page .environment-entry,
+    #environment-page .environment-left,
+    #environment-page .environment-right {
+        grid-template-columns: 1fr;
 
-        max-height: 240px;
+        grid-template-areas:
+            "video"
+            "info";
+
+        row-gap: 45px;
+
+        padding: 40px 35px;
     }
 
 
-    .stage-card > h2 {
-        min-height: 280px;
-
-        padding: 35px;
-
-        font-size:
-            clamp(
-                1.5rem,
-                3vw,
-                2.3rem
-            );
-    }
-
-}
-
-
-/* =========================================================
-   TABLETTE PETITE
-   ========================================================= */
-
-@media (max-width: 760px) {
-
-    .stage-card,
-    .stage-card:nth-child(even) {
-        grid-template-columns:
-            1fr;
-
-        display: grid;
-
-        min-height: 0;
-
-        border-left:
-            2px solid var(--color-cyan);
-
-        border-right:
-            1px solid var(--color-border);
+    #environment-page .environment-video {
+        justify-self: center;
     }
 
 
-    .stage-card-video,
-    .stage-card:nth-child(even) .stage-card-video {
-        order: 1;
-
-        width: 100%;
-
-        height: 300px;
-
-        min-height: 300px;
-
-        border-left:
-            none;
-
-        border-right:
-            none;
+    #environment-page .environment-info {
+        max-width: 100%;
     }
 
 
-    .stage-card-video video {
-        width: 100%;
-
-        height: 250px;
-
-        max-height: 250px;
-    }
-
-
-    .stage-card > h2,
-    .stage-card:nth-child(even) > h2 {
-        order: 2;
-
-        width: 100%;
-
-        min-height: 190px;
-
-        padding: 35px;
-
-        border-left:
-            none;
-
-        border-right:
-            none;
-
-        border-top:
-            1px solid var(--color-border);
-    }
-
-
-    .stage-card::before,
-    .stage-card:nth-child(even)::before {
-        left: 15px;
-
+    #environment-page .environment-left::before,
+    #environment-page .environment-right::before {
+        left: 0;
         right: auto;
     }
 
@@ -999,127 +1103,124 @@
 
 
 /* =========================================================
-   MOBILE
+   RESPONSIVE MOBILE
    ========================================================= */
 
-@media (max-width: 520px) {
+@media (max-width: 650px) {
 
-    #stages-page .section-content {
-        padding:
-            40px 15px 70px;
+    #environment-page {
+        padding: 70px 0 120px;
     }
 
 
-    #stages-page .section-content > h1 {
-        font-size:
-            clamp(
-                2.8rem,
-                15vw,
-                4rem
-            );
+    #environment-page > .section-content {
+        width: calc(100% - 24px);
     }
 
 
-    #stages-page .section-content > p:not(.section-label) {
-        margin-bottom: 40px;
+    #environment-page .classified-header {
+        padding: 20px 18px 25px;
 
-        font-size: 0.9rem;
+        margin-bottom: 45px;
     }
 
 
-    .stages-grid {
-        gap: 25px;
-    }
-
-
-    .stage-card,
-    .stage-card:nth-child(even) {
-        width: 100%;
-
-        display: flex;
-
+    #environment-page .classified-topline {
         flex-direction: column;
 
-        min-height: 0;
+        align-items: flex-start;
+
+        gap: 8px;
     }
 
 
-    .stage-card-video,
-    .stage-card:nth-child(even) .stage-card-video {
-        width: 100%;
-
-        height: 235px;
-
-        min-height: 235px;
-
-        padding: 15px;
+    #environment-page .classified-header h1 {
+        font-size: 42px;
     }
 
 
-    .stage-card-video::before {
-        inset: 10px;
+    #environment-page .dossier-meta {
+        grid-template-columns: 1fr;
+
+        margin-bottom: 40px;
     }
 
 
-    .stage-card-video::after {
-        left: 15px;
+    #environment-page .dossier-meta > div,
+    #environment-page .dossier-meta > div:nth-child(2) {
+        border-right: 0;
 
-        right: 15px;
-
-        top: 15px;
+        border-bottom: 1px solid var(--environment-border);
     }
 
 
-    .stage-card-video video {
-        width: 100%;
-
-        height: 200px;
-
-        max-height: 200px;
-
-        object-fit: cover;
+    #environment-page .dossier-meta > div:last-child {
+        border-bottom: 0;
     }
 
 
-    .stage-card > h2,
-    .stage-card:nth-child(even) > h2 {
-        width: 100%;
+    #environment-page .dossier-intro {
+        padding: 25px 20px;
 
-        min-height: 160px;
-
-        padding: 28px;
-
-        font-size: 1.6rem;
+        margin-bottom: 65px;
     }
 
 
-    .stage-card > h2::before {
-        margin-bottom: 14px;
+    #environment-page .environment-entry,
+    #environment-page .environment-left,
+    #environment-page .environment-right {
+        min-height: auto;
 
-        font-size: 0.5rem;
+        padding: 30px 20px;
+
+        margin-bottom: 80px;
+
+        row-gap: 35px;
     }
 
 
-    .stage-card > h2::after {
-        margin-top: 18px;
+    /*
+       On conserve la taille demandée :
+       180 x 320 px
+    */
 
-        padding-top: 13px;
+    #environment-page .environment-video {
+        width: 196px;
 
-        font-size: 0.45rem;
+        padding: 7px;
     }
 
 
-    .stage-card::before,
-    .stage-card:nth-child(even)::before {
-        top: 12px;
+    #environment-page .environment-video video {
+        width: 180px;
+        height: 320px;
+    }
 
-        left: 12px;
 
-        right: auto;
+    #environment-page .environment-info h2 {
+        font-size: 25px;
+    }
 
-        padding: 5px 7px;
 
-        font-size: 0.45rem;
+    #environment-page .environment-info p {
+        font-size: 11px;
+    }
+
+
+    #environment-page .environment-data {
+        gap: 6px;
+    }
+
+
+    #environment-page .environment-data span {
+        font-size: 7px;
+    }
+
+
+    #environment-page .environment-entry:not(:last-child)::after {
+        bottom: -42px;
+
+        height: 30px;
     }
 
 }
@@ -1129,36 +1230,28 @@
    TRÈS PETITS ÉCRANS
    ========================================================= */
 
-@media (max-width: 360px) {
+@media (max-width: 380px) {
 
-    #stages-page .section-content {
-        padding:
-            35px 10px 60px;
+    #environment-page .environment-entry,
+    #environment-page .environment-left,
+    #environment-page .environment-right {
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
 
-    .stage-card-video,
-    .stage-card:nth-child(even) .stage-card-video {
-        height: 210px;
-
-        min-height: 210px;
+    #environment-page .environment-video {
+        transform: scale(0.94);
     }
 
 
-    .stage-card-video video {
-        height: 180px;
-
-        max-height: 180px;
+    #environment-page .environment-entry:hover .environment-video {
+        transform: scale(0.94) translateY(-3px);
     }
 
 
-    .stage-card > h2,
-    .stage-card:nth-child(even) > h2 {
-        min-height: 145px;
-
-        padding: 25px;
-
-        font-size: 1.4rem;
+    #environment-page .classified-header h1 {
+        font-size: 35px;
     }
 
 }
@@ -1170,22 +1263,13 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-    .stage-card,
-    .stage-card-video video,
-    .stage-card:hover .stage-card-video::after {
-        animation: none;
-
-        transition: none;
-    }
-
-
-    .stage-card:hover {
-        transform: none;
-    }
-
-
-    .stage-card:hover .stage-card-video video {
-        transform: none;
+    #environment-page *,
+    #environment-page *::before,
+    #environment-page *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 
 }
