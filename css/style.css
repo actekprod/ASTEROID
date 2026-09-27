@@ -3293,11 +3293,96 @@ h2 {
 
  
 /* =========================================================
-   PAGE STAGES
+   PAGE STAGES — PEMP DATABASE
    ========================================================= */
 
 #stages-page {
     padding-top: 140px;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+#stages-page .section-content {
+    position: relative;
+}
+
+
+/* =========================================================
+   EN-TÊTE
+   ========================================================= */
+
+#stages-page .section-label {
+    position: relative;
+
+    display: inline-block;
+
+    padding-left: 18px;
+
+    letter-spacing: 0.18em;
+
+    color: var(--color-cyan);
+
+    font-size: 0.75rem;
+
+    text-transform: uppercase;
+}
+
+
+#stages-page .section-label::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    width: 8px;
+    height: 8px;
+
+    transform: translateY(-50%);
+
+    background:
+        var(--color-cyan);
+
+    box-shadow:
+        0 0 8px var(--color-cyan);
+
+    animation:
+        stage-pulse 2s ease-in-out infinite;
+}
+
+
+#stages-page h1 {
+    position: relative;
+
+    margin-bottom: 15px;
+}
+
+
+#stages-page h1::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 2px;
+
+    margin-top: 14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--color-cyan),
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px rgba(0, 255, 255, 0.35);
 }
 
 
@@ -3306,13 +3391,17 @@ h2 {
 }
 
 
+/* =========================================================
+   GRILLE
+   ========================================================= */
+
 #stages-page .stages-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3, minmax(0, 1fr));
 
-    gap: 40px 50px;
+    gap: 34px 40px;
 
     width: 100%;
 
@@ -3320,7 +3409,13 @@ h2 {
 }
 
 
+/* =========================================================
+   CARTE
+   ========================================================= */
+
 #stages-page .stage-card {
+    position: relative;
+
     display: flex;
 
     flex-direction: column;
@@ -3329,94 +3424,462 @@ h2 {
 
     width: 100%;
 
-    padding: 20px;
+    min-width: 0;
+
+    padding: 14px;
+
+    overflow: hidden;
 
     border:
-        1px solid var(--color-border);
+        1px solid
+        rgba(0, 220, 255, 0.28);
 
     border-radius:
-        var(--radius-medium);
+        2px;
 
     background:
-        rgba(5, 15, 28, 0.75);
-
-    transition:
-        border-color var(--transition-normal),
-        box-shadow var(--transition-normal),
-        transform var(--transition-normal);
-}
-
-
-#stages-page .stage-card:hover {
-    border-color:
-        var(--color-border-strong);
+        linear-gradient(
+            145deg,
+            rgba(7, 20, 35, 0.96),
+            rgba(3, 10, 20, 0.90)
+        );
 
     box-shadow:
-        var(--glow-cyan);
+        inset 0 0 25px rgba(0, 180, 255, 0.035),
+        0 8px 25px rgba(0, 0, 0, 0.25);
 
-    transform:
-        translateY(-4px);
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+
+    animation:
+        stage-card-in 0.7s ease both;
 }
 
 
+/* =========================================================
+   DÉCALAGE D'APPARITION
+   ========================================================= */
+
+#stages-page .stage-card:nth-child(1)  { animation-delay: 0.03s; }
+#stages-page .stage-card:nth-child(2)  { animation-delay: 0.06s; }
+#stages-page .stage-card:nth-child(3)  { animation-delay: 0.09s; }
+#stages-page .stage-card:nth-child(4)  { animation-delay: 0.12s; }
+#stages-page .stage-card:nth-child(5)  { animation-delay: 0.15s; }
+#stages-page .stage-card:nth-child(6)  { animation-delay: 0.18s; }
+#stages-page .stage-card:nth-child(7)  { animation-delay: 0.21s; }
+#stages-page .stage-card:nth-child(8)  { animation-delay: 0.24s; }
+#stages-page .stage-card:nth-child(9)  { animation-delay: 0.27s; }
+
+
+/* =========================================================
+   COINS TECHNIQUES
+   ========================================================= */
+
+#stages-page .stage-card::before,
+#stages-page .stage-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    pointer-events: none;
+
+    transition:
+        width 0.35s ease,
+        height 0.35s ease,
+        opacity 0.35s ease;
+}
+
+
+/* coin haut gauche */
+
+#stages-page .stage-card::before {
+    top: 0;
+    left: 0;
+
+    border-top:
+        2px solid var(--color-cyan);
+
+    border-left:
+        2px solid var(--color-cyan);
+
+    opacity: 0.7;
+}
+
+
+/* coin bas droit */
+
+#stages-page .stage-card::after {
+    right: 0;
+    bottom: 0;
+
+    border-right:
+        2px solid var(--color-cyan);
+
+    border-bottom:
+        2px solid var(--color-cyan);
+
+    opacity: 0.7;
+}
+
+
+#stages-page .stage-card:hover::before,
+#stages-page .stage-card:hover::after {
+    width: 32px;
+    height: 32px;
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   LIGNE DE BALAYAGE
+   ========================================================= */
+
 #stages-page .stage-card-video {
+    position: relative;
+
     display: flex;
 
     align-items: center;
     justify-content: center;
 
     width: 100%;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(0, 220, 255, 0.20);
+
+    background:
+        #020914;
 }
 
 
-#stages-page .stage-card h2 {
-    margin-top: 16px;
-    margin-bottom: 0;
+/* balayage */
 
-    color: var(--color-cyan);
+#stages-page .stage-card-video::after {
+    content: "";
 
-    font-size: 1rem;
+    position: absolute;
 
-    text-align: center;
+    left: 0;
+    right: 0;
+
+    top: -20%;
+
+    height: 20%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(0, 220, 255, 0.08),
+            transparent
+        );
+
+    animation:
+        stage-scan 5s linear infinite;
+
+    opacity: 0.7;
 }
+
+
 /* =========================================================
-   BOUTONS NAVIGATION MÉDIAS
+   VIDÉO
    ========================================================= */
 
-.media-page-actions {
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    justify-items: center;
+#stages-page .stage-card video {
+    display: block;
 
     width: 100%;
 
-    margin-top: 50px;
-    margin-bottom: 50px;
+    height: auto;
 
-    gap: 40px;
+    max-width: 100%;
+
+    border: 0;
+
+    background:
+        #000;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
 }
 
 
-.media-page-actions .btn {
-    width: 300px;
+#stages-page .stage-card:hover video {
+    transform:
+        scale(1.025);
 
-    min-height: 70px;
-
-    padding: 20px 30px;
-
-    font-size: 1rem;
+    filter:
+        brightness(1.08)
+        saturate(1.12);
 }
 
 
-.media-page-video-button {
-    grid-column:
-        1 / 3;
+/* =========================================================
+   BARRE TECHNIQUE AU-DESSUS DE LA VIDÉO
+   ========================================================= */
 
-    justify-self: center;
+#stages-page .stage-card-video::before {
+    content: "PEMP // VISUAL FEED";
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 7px;
+    left: 9px;
+
+    padding:
+        3px 7px;
+
+    border:
+        1px solid
+        rgba(0, 220, 255, 0.35);
+
+    background:
+        rgba(2, 9, 18, 0.78);
+
+    color:
+        rgba(0, 230, 255, 0.8);
+
+    font-size:
+        0.55rem;
+
+    letter-spacing:
+        0.12em;
+
+    pointer-events: none;
 }
+
+
+/* =========================================================
+   TITRE DU STAGE
+   ========================================================= */
+
+#stages-page .stage-card h2 {
+    position: relative;
+
+    width: 100%;
+
+    margin:
+        14px 0 3px;
+
+    padding:
+        9px 10px;
+
+    border-top:
+        1px solid
+        rgba(0, 220, 255, 0.18);
+
+    color:
+        var(--color-cyan);
+
+    font-size:
+        0.9rem;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        0.12em;
+
+    text-align:
+        left;
+
+    text-transform:
+        uppercase;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+#stages-page .stage-card h2::after {
+    content: "";
+
+    position: absolute;
+
+    right: 10px;
+    top: 50%;
+
+    width: 7px;
+    height: 7px;
+
+    transform:
+        translateY(-50%);
+
+    border-radius:
+        50%;
+
+    background:
+        var(--color-cyan);
+
+    box-shadow:
+        0 0 8px
+        var(--color-cyan);
+
+    opacity:
+        0.5;
+
+    transition:
+        opacity 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   HOVER CARTE
+   ========================================================= */
+
+#stages-page .stage-card:hover {
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(0, 235, 255, 0.75);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 28, 45, 0.98),
+            rgba(3, 12, 23, 0.96)
+        );
+
+    box-shadow:
+        0 0 0 1px
+        rgba(0, 220, 255, 0.08),
+
+        0 0 22px
+        rgba(0, 220, 255, 0.16),
+
+        0 14px 35px
+        rgba(0, 0, 0, 0.35);
+}
+
+
+#stages-page .stage-card:hover h2 {
+    color:
+        #ffffff;
+
+    border-color:
+        rgba(0, 220, 255, 0.45);
+}
+
+
+#stages-page .stage-card:hover h2::after {
+    opacity:
+        1;
+
+    box-shadow:
+        0 0 5px var(--color-cyan),
+        0 0 12px var(--color-cyan);
+}
+
+
+/* =========================================================
+   PETITE LIGNE LUMINEUSE
+   ========================================================= */
+
+#stages-page .stage-card-video {
+    box-shadow:
+        inset 0 0 20px
+        rgba(0, 220, 255, 0.025);
+}
+
+
+#stages-page .stage-card-video::marker {
+    display: none;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes stage-card-in {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+@keyframes stage-scan {
+
+    0% {
+        top: -20%;
+    }
+
+    100% {
+        top: 110%;
+    }
+
+}
+
+
+@keyframes stage-pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+
+        box-shadow:
+            0 0 4px
+            var(--color-cyan);
+    }
+
+    50% {
+        opacity: 1;
+
+        box-shadow:
+            0 0 12px
+            var(--color-cyan);
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITÉ
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #stages-page .stage-card,
+    #stages-page .stage-card-video::after,
+    #stages-page .section-label::before {
+        animation: none;
+    }
+
+    #stages-page .stage-card,
+    #stages-page .stage-card video {
+        transition: none;
+    }
+
+}
+
 
 /* =========================================================
    ARTWORKS
