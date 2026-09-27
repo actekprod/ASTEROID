@@ -8216,6 +8216,108 @@
 
 
 
+
+
+
+
+/* =========================================================
+   ARTWORKS — RESPONSIVE
+   ========================================================= */
+/* =========================================================
+   1024 PX
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+    .artworks-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 25px;
+    }
+
+
+    .artwork-card img {
+        height: 180px;
+    }
+
+
+    .artwork-card.artwork-open {
+        width: 90vw;
+
+        max-width: 90vw;
+
+        aspect-ratio: 16 / 9;
+    }
+
+}
+
+
+/* =========================================================
+   700 PX
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .artworks-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 20px;
+    }
+
+
+    .artwork-card img {
+        height: 160px;
+    }
+
+
+    .artwork-card.artwork-open {
+        width: 92vw;
+
+        max-width: 92vw;
+
+        aspect-ratio: 16 / 9;
+    }
+
+}
+
+
+/* =========================================================
+   360 PX
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .artworks-grid {
+        grid-template-columns:
+            1fr;
+
+        gap: 20px;
+    }
+
+
+    .artwork-card img {
+        height: 180px;
+    }
+
+
+    .artwork-card.artwork-open {
+        width: 94vw;
+
+        max-width: 94vw;
+
+        aspect-ratio: 16 / 9;
+    }
+
+}
+
+/* =========================================================
+   FIN — RESPONSIVE PAGE ARTWORKS
+   ========================================================= */
+
+
+
 /* =========================================================
                     CORRECTION BUGS MOBILE
    ========================================================= */
