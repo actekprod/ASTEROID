@@ -1,6 +1,6 @@
 /* =========================================================
-   PAGE ENVIRONNEMENTS
-   MÊME STYLE QUE LA PAGE "LE JEU"
+   PAGE ENVIRONNEMENT
+   DOSSIER CLASSIFIÉ / SECTEURS
    ========================================================= */
 
 
@@ -158,11 +158,31 @@
 }
 
 
+@keyframes danger-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+
+        box-shadow:
+            0 0 8px var(--color-danger);
+    }
+
+    50% {
+        opacity: 0.35;
+
+        box-shadow:
+            0 0 2px var(--color-danger);
+    }
+
+}
+
+
 /* =========================================================
-   DOSSIER ENVIRONNEMENT
+   DOSSIER PRINCIPAL
    ========================================================= */
 
-.environment-dossier {
+.game-dossier {
     position: relative;
 
     max-width: 1050px;
@@ -189,13 +209,13 @@
 }
 
 
-.environment-dossier::before {
+.game-dossier::before {
     content: "ENVIRONMENT // CONFIDENTIAL";
 
     position: absolute;
 
     top: 24px;
-    right: -42px;
+    right: -55px;
 
     padding: 5px 50px;
 
@@ -219,7 +239,7 @@
    MÉTADONNÉES
    ========================================================= */
 
-.environment-meta {
+.dossier-meta {
     display: grid;
 
     grid-template-columns:
@@ -232,7 +252,7 @@
 }
 
 
-.environment-meta > div {
+.dossier-meta > div {
     min-height: 90px;
 
     padding: 18px 20px;
@@ -242,12 +262,12 @@
 }
 
 
-.environment-meta > div:last-child {
+.dossier-meta > div:last-child {
     border-right: none;
 }
 
 
-.environment-meta span {
+.dossier-meta span {
     display: block;
 
     margin-bottom: 7px;
@@ -262,7 +282,7 @@
 }
 
 
-.environment-meta strong {
+.dossier-meta strong {
     color: var(--color-cyan);
 
     font-size: 0.75rem;
@@ -271,7 +291,7 @@
 }
 
 
-.environment-danger-text {
+.danger-text {
     color:
         var(--color-danger-light) !important;
 
@@ -284,14 +304,14 @@
    INTRODUCTION
    ========================================================= */
 
-.environment-intro {
+.dossier-intro {
     max-width: 850px;
 
     margin-bottom: 75px;
 }
 
 
-.environment-intro .dossier-number {
+.dossier-number {
     display: block;
 
     margin-bottom: 12px;
@@ -309,7 +329,7 @@
 }
 
 
-.environment-intro h2 {
+.dossier-intro h2 {
     margin-bottom: 28px;
 
     font-size: clamp(
@@ -320,7 +340,8 @@
 }
 
 
-.environment-intro p {
+.dossier-intro p,
+.dossier-block p {
     max-width: 820px;
 
     margin-bottom: 20px;
@@ -333,7 +354,7 @@
 }
 
 
-.environment-intro .lead-text {
+.lead-text {
     color: var(--color-white) !important;
 
     font-size: 1.2rem !important;
@@ -342,7 +363,7 @@
 }
 
 
-.environment-intro .warning-text {
+.warning-text {
     margin-top: 35px;
 
     color: var(--color-danger-light) !important;
@@ -365,10 +386,10 @@
 
 
 /* =========================================================
-   BLOCS ENVIRONNEMENT
+   BLOC ENVIRONNEMENT
    ========================================================= */
 
-.environment-block {
+.dossier-block {
     position: relative;
 
     margin-bottom: 50px;
@@ -391,7 +412,7 @@
 }
 
 
-.environment-block:hover {
+.dossier-block:hover {
     border-color:
         var(--color-border-strong);
 
@@ -404,11 +425,7 @@
 }
 
 
-/* =========================================================
-   MARQUEUR DE BLOC
-   ========================================================= */
-
-.environment-block .block-marker {
+.block-marker {
     display: flex;
 
     align-items: center;
@@ -427,7 +444,7 @@
 }
 
 
-.environment-block .block-marker span {
+.block-marker span {
     display: inline-flex;
 
     align-items: center;
@@ -449,7 +466,7 @@
 }
 
 
-.environment-block h2 {
+.dossier-block h2 {
     margin-bottom: 22px;
 
     color: var(--color-white);
@@ -462,49 +479,54 @@
 }
 
 
-.environment-block p {
-    max-width: 820px;
+.dossier-block strong {
+    color: var(--color-cyan);
 
-    margin-bottom: 20px;
-
-    color: var(--color-text);
-
-    font-size: 1rem;
-
-    line-height: 1.9;
+    font-weight: 800;
 }
 
 
 /* =========================================================
-   GRILLE DES VIDÉOS
+   GRILLE DES STAGES / ENVIRONNEMENTS
    ========================================================= */
 
-.environment-video-grid {
+.stages-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(3, minmax(0, 1fr));
 
-    gap: 20px;
+    gap: 18px;
 
     margin-top: 35px;
+
+    width: 100%;
 }
 
 
 /* =========================================================
-   CARTE VIDÉO
+   CARTE STAGE
    ========================================================= */
 
-.environment-video-card {
+.stage-card {
     position: relative;
+
+    min-width: 0;
+
+    padding: 15px;
 
     border:
         1px solid var(--color-border);
 
     background:
-        rgba(0, 229, 255, 0.025);
+        linear-gradient(
+            145deg,
+            rgba(0, 229, 255, 0.035),
+            rgba(4, 9, 18, 0.7)
+        );
 
-    overflow: hidden;
+    box-shadow:
+        inset 0 0 25px rgba(0, 229, 255, 0.015);
 
     transition:
         border-color var(--transition-normal),
@@ -513,47 +535,16 @@
 }
 
 
-.environment-video-card:hover {
+.stage-card:hover {
     border-color:
         var(--color-border-strong);
 
     box-shadow:
-        0 0 25px rgba(0, 229, 255, 0.06);
+        0 0 25px rgba(0, 229, 255, 0.08),
+        inset 0 0 30px rgba(0, 229, 255, 0.025);
 
     transform:
-        translateY(-3px);
-}
-
-
-/* =========================================================
-   HEADER DE LA CARTE VIDÉO
-   ========================================================= */
-
-.environment-video-card-header {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 15px;
-
-    padding: 14px 18px;
-
-    border-bottom:
-        1px solid var(--color-border);
-
-    background:
-        rgba(0, 229, 255, 0.035);
-
-    color:
-        var(--color-cyan);
-
-    font-size: 0.6rem;
-
-    font-weight: 800;
-
-    letter-spacing: 0.16em;
+        translateY(-4px);
 }
 
 
@@ -561,22 +552,38 @@
    VIDÉO
    ========================================================= */
 
-.environment-video {
+.stage-card-video {
+    position: relative;
+
     width: 100%;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--color-border);
 
     background:
         #02060d;
 }
 
 
-.environment-video video {
+/*
+   On conserve la classe existante :
+   .video-size-small-portrait
+*/
+
+.video-size-small-portrait {
     display: block;
 
     width: 100%;
 
-    height: 300px;
+    height: auto;
 
-    object-fit: cover;
+    max-width: 100%;
+
+    aspect-ratio: 9 / 16;
+
+    object-fit: contain;
 
     background:
         #02060d;
@@ -584,76 +591,86 @@
 
 
 /* =========================================================
-   INFORMATIONS DE LA VIDÉO
+   CONTROLES VIDEO
    ========================================================= */
 
-.environment-video-info {
-    padding: 18px;
+.stage-card video {
+    display: block;
 
-    border-top:
-        1px solid var(--color-border);
+    width: 100%;
+
+    max-width: 100%;
 }
 
 
-.environment-video-info h3 {
-    margin-bottom: 7px;
+.stage-card video:focus {
+    outline:
+        1px solid var(--color-cyan);
 
-    color:
-        var(--color-white);
-
-    font-size: 1rem;
-}
-
-
-.environment-video-info span {
-    color:
-        var(--color-text-muted);
-
-    font-size: 0.55rem;
-
-    font-weight: 700;
-
-    letter-spacing: 0.15em;
+    outline-offset:
+        2px;
 }
 
 
 /* =========================================================
-   ÉTAT DE LA VIDÉO
+   TITRE DU STAGE
    ========================================================= */
 
-.environment-video-status {
-    display: flex;
+.stage-card > h2 {
+    margin: 16px 0 4px;
 
-    align-items: center;
+    color: var(--color-white);
 
-    gap: 8px;
+    font-size: 1rem;
 
-    margin-top: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+
+.stage-card > h2::before {
+    content: "// ";
 
     color:
         var(--color-cyan);
+}
 
-    font-size: 0.55rem;
+
+/* =========================================================
+   MARQUEUR DE SECTEUR
+   ========================================================= */
+
+.stage-card::before {
+    content: "SECTOR";
+
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    z-index: 2;
+
+    padding: 4px 7px;
+
+    border:
+        1px solid rgba(0, 229, 255, 0.25);
+
+    background:
+        rgba(2, 6, 13, 0.85);
+
+    color:
+        rgba(0, 229, 255, 0.7);
+
+    font-size: 0.45rem;
 
     font-weight: 800;
 
     letter-spacing: 0.15em;
-}
 
-
-.environment-video-status::before {
-    content: "";
-
-    width: 6px;
-    height: 6px;
-
-    border-radius: 50%;
-
-    background:
-        var(--color-cyan);
-
-    box-shadow:
-        0 0 8px var(--color-cyan);
+    pointer-events: none;
 }
 
 
@@ -661,39 +678,39 @@
    RESPONSIVE
    ========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
 
-    .environment-dossier {
-        padding: 25px;
+    .game-dossier {
+        padding: 30px;
     }
 
 
-    .environment-meta {
+    .dossier-meta {
         grid-template-columns:
             repeat(2, 1fr);
     }
 
 
-    .environment-meta > div:nth-child(2) {
+    .dossier-meta > div:nth-child(2) {
         border-right: none;
     }
 
 
-    .environment-meta > div:nth-child(-n + 2) {
+    .dossier-meta > div:nth-child(-n + 2) {
         border-bottom:
             1px solid var(--color-border);
     }
 
 
-    .environment-video-grid {
+    .stages-grid {
         grid-template-columns:
-            1fr;
+            repeat(2, minmax(0, 1fr));
     }
 
 }
 
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
 
     .classified-header {
         padding: 25px 20px 30px;
@@ -707,18 +724,18 @@
     }
 
 
-    .environment-dossier {
-        padding: 18px;
+    .game-dossier {
+        padding: 20px;
     }
 
 
-    .environment-meta {
+    .dossier-meta {
         grid-template-columns:
             1fr;
     }
 
 
-    .environment-meta > div {
+    .dossier-meta > div {
         border-right: none;
 
         border-bottom:
@@ -726,22 +743,31 @@
     }
 
 
-    .environment-meta > div:last-child {
+    .dossier-meta > div:last-child {
         border-bottom: none;
     }
 
 
-    .environment-block {
-        padding: 22px;
+    .dossier-block {
+        padding: 22px 18px;
     }
 
 
-    .environment-video video {
-        height: auto;
+    .stages-grid {
+        grid-template-columns:
+            1fr;
 
-        min-height: 220px;
+        gap: 15px;
+    }
 
-        object-fit: contain;
+
+    .stage-card {
+        padding: 12px;
+    }
+
+
+    .video-size-small-portrait {
+        aspect-ratio: 9 / 16;
     }
 
 }
