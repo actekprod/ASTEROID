@@ -3293,7 +3293,7 @@ h2 {
 
  
 /* =========================================================
-   PAGE STAGES — PEMP DATABASE
+   PAGE STAGES — DATABASE
    ========================================================= */
 
 #stages-page {
@@ -3304,7 +3304,7 @@ h2 {
 
 
 /* =========================================================
-   CONTENEUR
+   CONTENU
    ========================================================= */
 
 #stages-page .section-content {
@@ -3323,11 +3323,11 @@ h2 {
 
     padding-left: 18px;
 
-    letter-spacing: 0.18em;
-
     color: var(--color-cyan);
 
     font-size: 0.75rem;
+
+    letter-spacing: 0.18em;
 
     text-transform: uppercase;
 }
@@ -3350,7 +3350,8 @@ h2 {
         var(--color-cyan);
 
     box-shadow:
-        0 0 8px var(--color-cyan);
+        0 0 8px
+        var(--color-cyan);
 
     animation:
         stage-pulse 2s ease-in-out infinite;
@@ -3382,7 +3383,8 @@ h2 {
         );
 
     box-shadow:
-        0 0 10px rgba(0, 255, 255, 0.35);
+        0 0 10px
+        rgba(0, 255, 255, 0.35);
 }
 
 
@@ -3392,7 +3394,7 @@ h2 {
 
 
 /* =========================================================
-   GRILLE
+   GRILLE DES STAGES
    ========================================================= */
 
 #stages-page .stages-grid {
@@ -3445,8 +3447,11 @@ h2 {
         );
 
     box-shadow:
-        inset 0 0 25px rgba(0, 180, 255, 0.035),
-        0 8px 25px rgba(0, 0, 0, 0.25);
+        inset 0 0 25px
+        rgba(0, 180, 255, 0.035),
+
+        0 8px 25px
+        rgba(0, 0, 0, 0.25);
 
     transition:
         transform 0.35s ease,
@@ -3460,18 +3465,44 @@ h2 {
 
 
 /* =========================================================
-   DÉCALAGE D'APPARITION
+   APPARITION PROGRESSIVE
    ========================================================= */
 
-#stages-page .stage-card:nth-child(1)  { animation-delay: 0.03s; }
-#stages-page .stage-card:nth-child(2)  { animation-delay: 0.06s; }
-#stages-page .stage-card:nth-child(3)  { animation-delay: 0.09s; }
-#stages-page .stage-card:nth-child(4)  { animation-delay: 0.12s; }
-#stages-page .stage-card:nth-child(5)  { animation-delay: 0.15s; }
-#stages-page .stage-card:nth-child(6)  { animation-delay: 0.18s; }
-#stages-page .stage-card:nth-child(7)  { animation-delay: 0.21s; }
-#stages-page .stage-card:nth-child(8)  { animation-delay: 0.24s; }
-#stages-page .stage-card:nth-child(9)  { animation-delay: 0.27s; }
+#stages-page .stage-card:nth-child(1)  {
+    animation-delay: 0.03s;
+}
+
+#stages-page .stage-card:nth-child(2)  {
+    animation-delay: 0.06s;
+}
+
+#stages-page .stage-card:nth-child(3)  {
+    animation-delay: 0.09s;
+}
+
+#stages-page .stage-card:nth-child(4)  {
+    animation-delay: 0.12s;
+}
+
+#stages-page .stage-card:nth-child(5)  {
+    animation-delay: 0.15s;
+}
+
+#stages-page .stage-card:nth-child(6)  {
+    animation-delay: 0.18s;
+}
+
+#stages-page .stage-card:nth-child(7)  {
+    animation-delay: 0.21s;
+}
+
+#stages-page .stage-card:nth-child(8)  {
+    animation-delay: 0.24s;
+}
+
+#stages-page .stage-card:nth-child(9)  {
+    animation-delay: 0.27s;
+}
 
 
 /* =========================================================
@@ -3503,10 +3534,12 @@ h2 {
     left: 0;
 
     border-top:
-        2px solid var(--color-cyan);
+        2px solid
+        var(--color-cyan);
 
     border-left:
-        2px solid var(--color-cyan);
+        2px solid
+        var(--color-cyan);
 
     opacity: 0.7;
 }
@@ -3519,10 +3552,12 @@ h2 {
     bottom: 0;
 
     border-right:
-        2px solid var(--color-cyan);
+        2px solid
+        var(--color-cyan);
 
     border-bottom:
-        2px solid var(--color-cyan);
+        2px solid
+        var(--color-cyan);
 
     opacity: 0.7;
 }
@@ -3538,7 +3573,8 @@ h2 {
 
 
 /* =========================================================
-   LIGNE DE BALAYAGE
+   CONTENEUR VIDÉO
+   FORMAT EXACT : 180 × 320
    ========================================================= */
 
 #stages-page .stage-card-video {
@@ -3549,25 +3585,126 @@ h2 {
     align-items: center;
     justify-content: center;
 
-    width: 100%;
+    width: 180px;
+    height: 320px;
+
+    min-width: 180px;
+    max-width: 180px;
+
+    min-height: 320px;
+    max-height: 320px;
+
+    flex:
+        0 0 180px;
 
     overflow: hidden;
 
     border:
         1px solid
-        rgba(0, 220, 255, 0.20);
+        rgba(0, 220, 255, 0.22);
 
     background:
         #020914;
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(0, 220, 255, 0.025);
 }
 
 
-/* balayage */
+/* =========================================================
+   VIDÉO
+   FORMAT EXACT : 180 × 320
+   ========================================================= */
+
+#stages-page .stage-card video {
+    display: block;
+
+    width: 180px;
+    height: 320px;
+
+    min-width: 180px;
+    max-width: 180px;
+
+    min-height: 320px;
+    max-height: 320px;
+
+    object-fit: cover;
+
+    border: 0;
+
+    background:
+        #000;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+
+/* =========================================================
+   EFFET HOVER VIDÉO
+   ========================================================= */
+
+#stages-page .stage-card:hover video {
+    transform:
+        scale(1.025);
+
+    filter:
+        brightness(1.08)
+        saturate(1.12);
+}
+
+
+/* =========================================================
+   INDICATEUR TECHNIQUE
+   ========================================================= */
+
+#stages-page .stage-card-video::before {
+    content:
+        "PEMP // VISUAL FEED";
+
+    position: absolute;
+
+    z-index: 3;
+
+    top: 7px;
+    left: 7px;
+
+    padding:
+        3px 7px;
+
+    border:
+        1px solid
+        rgba(0, 220, 255, 0.35);
+
+    background:
+        rgba(2, 9, 18, 0.80);
+
+    color:
+        rgba(0, 230, 255, 0.82);
+
+    font-size:
+        0.55rem;
+
+    letter-spacing:
+        0.12em;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   BALAYAGE LUMINEUX
+   ========================================================= */
 
 #stages-page .stage-card-video::after {
     content: "";
 
     position: absolute;
+
+    z-index: 2;
 
     left: 0;
     right: 0;
@@ -3586,81 +3723,11 @@ h2 {
             transparent
         );
 
+    opacity:
+        0.7;
+
     animation:
         stage-scan 5s linear infinite;
-
-    opacity: 0.7;
-}
-
-
-/* =========================================================
-   VIDÉO
-   ========================================================= */
-
-#stages-page .stage-card video {
-    display: block;
-
-    width: 100%;
-
-    height: auto;
-
-    max-width: 100%;
-
-    border: 0;
-
-    background:
-        #000;
-
-    transition:
-        transform 0.5s ease,
-        filter 0.5s ease;
-}
-
-
-#stages-page .stage-card:hover video {
-    transform:
-        scale(1.025);
-
-    filter:
-        brightness(1.08)
-        saturate(1.12);
-}
-
-
-/* =========================================================
-   BARRE TECHNIQUE AU-DESSUS DE LA VIDÉO
-   ========================================================= */
-
-#stages-page .stage-card-video::before {
-    content: "PEMP // VISUAL FEED";
-
-    position: absolute;
-
-    z-index: 3;
-
-    top: 7px;
-    left: 9px;
-
-    padding:
-        3px 7px;
-
-    border:
-        1px solid
-        rgba(0, 220, 255, 0.35);
-
-    background:
-        rgba(2, 9, 18, 0.78);
-
-    color:
-        rgba(0, 230, 255, 0.8);
-
-    font-size:
-        0.55rem;
-
-    letter-spacing:
-        0.12em;
-
-    pointer-events: none;
 }
 
 
@@ -3671,7 +3738,7 @@ h2 {
 #stages-page .stage-card h2 {
     position: relative;
 
-    width: 100%;
+    width: 180px;
 
     margin:
         14px 0 3px;
@@ -3784,24 +3851,11 @@ h2 {
         1;
 
     box-shadow:
-        0 0 5px var(--color-cyan),
-        0 0 12px var(--color-cyan);
-}
+        0 0 5px
+        var(--color-cyan),
 
-
-/* =========================================================
-   PETITE LIGNE LUMINEUSE
-   ========================================================= */
-
-#stages-page .stage-card-video {
-    box-shadow:
-        inset 0 0 20px
-        rgba(0, 220, 255, 0.025);
-}
-
-
-#stages-page .stage-card-video::marker {
-    display: none;
+        0 0 12px
+        var(--color-cyan);
 }
 
 
@@ -3813,12 +3867,14 @@ h2 {
 
     from {
         opacity: 0;
+
         transform:
             translateY(18px);
     }
 
     to {
         opacity: 1;
+
         transform:
             translateY(0);
     }
@@ -3879,6 +3935,7 @@ h2 {
     }
 
 }
+
 
 
 /* =========================================================
