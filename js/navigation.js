@@ -235,3 +235,16 @@ if (asteroidCard) {
 
     asteroidCard.style.cursor = "pointer";
 }
+/* =========================================================
+   CLICK CARTE ENVIRONNEMENT
+   ========================================================= */
+
+const environmentCard = document.querySelector(".feature-stages");
+
+if (environmentCard) {
+    environmentCard.addEventListener("click", () => {
+        window.location.href = "environnement.html";
+    });
+
+    environmentCard.style.cursor = "pointer";
+}
