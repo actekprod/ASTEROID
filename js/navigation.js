@@ -248,3 +248,97 @@ if (environmentCard) {
 
     environmentCard.style.cursor = "pointer";
 }
+/* =========================================================
+   ARTWORK AGRANDISSEMENT CLICK
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const artworkCards =
+        document.querySelectorAll(".artwork-card");
+
+
+    /* =====================================================
+       OUVERTURE / FERMETURE
+       ===================================================== */
+
+    artworkCards.forEach((card) => {
+
+        card.addEventListener("click", () => {
+
+            /*
+             * Si l'image est déjà ouverte,
+             * on la ferme.
+             */
+
+            if (card.classList.contains("artwork-open")) {
+
+                card.classList.remove(
+                    "artwork-open"
+                );
+
+                document.body.classList.remove(
+                    "artwork-viewer-open"
+                );
+
+                return;
+            }
+
+
+            /*
+             * Ferme les autres artworks
+             */
+
+            artworkCards.forEach((otherCard) => {
+
+                otherCard.classList.remove(
+                    "artwork-open"
+                );
+
+            });
+
+
+            /*
+             * Ouvre l'artwork sélectionné
+             */
+
+            card.classList.add(
+                "artwork-open"
+            );
+
+            document.body.classList.add(
+                "artwork-viewer-open"
+            );
+
+        });
+
+    });
+
+
+    /* =====================================================
+       FERMETURE AVEC ESC
+       ===================================================== */
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key !== "Escape") {
+            return;
+        }
+
+
+        artworkCards.forEach((card) => {
+
+            card.classList.remove(
+                "artwork-open"
+            );
+
+        });
+
+
+        document.body.classList.remove(
+            "artwork-viewer-open"
+        );
+
+    });
+
+});
