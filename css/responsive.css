@@ -7544,6 +7544,677 @@
 
 
 
+/* =========================================================
+   ENVIRONMENT PAGE RESPONSIVE
+   ========================================================= */
+
+
+/* =========================================================
+   BASE — FORMAT VIDÉO
+   ========================================================= */
+
+#environment-page {
+    --env-video-width: 180px;
+    --env-video-height: 320px;
+}
+
+
+/* =========================================================
+   1024 PX
+   TABLETTE / PETIT DESKTOP
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+    #environment-page {
+        padding: 90px 0 120px;
+    }
+
+
+    /* -----------------------------------------------------
+       CONTENU
+       ----------------------------------------------------- */
+
+    #environment-page > .section-content {
+        width: calc(100% - 50px);
+        max-width: none;
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER
+       ----------------------------------------------------- */
+
+    #environment-page .classified-header {
+        margin-bottom: 55px;
+        padding: 24px 25px 28px;
+    }
+
+
+    #environment-page .classified-header h1 {
+        font-size: 58px;
+    }
+
+
+    /* -----------------------------------------------------
+       META
+       ----------------------------------------------------- */
+
+    #environment-page .dossier-meta {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    #environment-page .dossier-meta > div {
+        border-bottom: 1px solid var(--env-border);
+    }
+
+
+    #environment-page .dossier-meta > div:nth-child(2) {
+        border-right: none;
+    }
+
+
+    #environment-page .dossier-meta > div:nth-child(3),
+    #environment-page .dossier-meta > div:nth-child(4) {
+        border-bottom: none;
+    }
+
+
+    /* -----------------------------------------------------
+       INTRO
+       ----------------------------------------------------- */
+
+    #environment-page .dossier-intro {
+        max-width: 760px;
+
+        margin-bottom: 75px;
+
+        padding: 30px 32px;
+    }
+
+
+    #environment-page .dossier-intro h2 {
+        font-size: 34px;
+    }
+
+
+    /* -----------------------------------------------------
+       ENVIRONMENT ENTRY
+       ----------------------------------------------------- */
+
+    #environment-page .environment-entry {
+        grid-template-columns:
+            minmax(0, 180px)
+            minmax(0, 1fr);
+
+        column-gap: 55px;
+
+        min-height: 420px;
+
+        padding: 40px 35px;
+
+        margin-bottom: 90px;
+    }
+
+
+    /* -----------------------------------------------------
+       VIDÉO
+       ----------------------------------------------------- */
+
+    #environment-page .environment-video {
+        width: 196px !important;
+        max-width: 196px !important;
+
+        padding: 7px !important;
+    }
+
+
+    #environment-page .environment-video video {
+        width: 180px !important;
+        height: 320px !important;
+
+        min-width: 180px !important;
+        max-width: 180px !important;
+
+        min-height: 320px !important;
+        max-height: 320px !important;
+
+        object-fit: cover !important;
+    }
+
+
+    /* -----------------------------------------------------
+       INFORMATIONS
+       ----------------------------------------------------- */
+
+    #environment-page .environment-info {
+        max-width: 100%;
+    }
+
+
+    #environment-page .environment-info h2 {
+        font-size: 29px;
+    }
+
+
+    #environment-page .environment-info p {
+        font-size: 11px;
+        line-height: 1.75;
+    }
+
+}
+
+
+/* =========================================================
+   700 PX
+   TABLETTE PORTRAIT / PETIT ÉCRAN
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    #environment-page {
+        padding: 75px 0 100px;
+    }
+
+
+    /* -----------------------------------------------------
+       CONTENU
+       ----------------------------------------------------- */
+
+    #environment-page > .section-content {
+        width: calc(100% - 30px);
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER
+       ----------------------------------------------------- */
+
+    #environment-page .classified-header {
+        margin-bottom: 45px;
+
+        padding: 20px 18px 24px;
+    }
+
+
+    #environment-page .classified-topline {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+
+        padding-bottom: 14px;
+        margin-bottom: 20px;
+
+        font-size: 9px;
+    }
+
+
+    #environment-page .classified-header .section-label {
+        font-size: 9px;
+    }
+
+
+    #environment-page .classified-header h1 {
+        font-size: 44px;
+
+        line-height: 0.95;
+    }
+
+
+    #environment-page .classified-status {
+        margin-top: 20px;
+
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------------------
+       META
+       ----------------------------------------------------- */
+
+    #environment-page .dossier-meta {
+        grid-template-columns: 1fr;
+
+        margin-bottom: 45px;
+    }
+
+
+    #environment-page .dossier-meta > div {
+        min-height: 65px;
+
+        border-right: none !important;
+        border-bottom: 1px solid var(--env-border);
+    }
+
+
+    #environment-page .dossier-meta > div:last-child {
+        border-bottom: none;
+    }
+
+
+    /* -----------------------------------------------------
+       INTRO
+       ----------------------------------------------------- */
+
+    #environment-page .dossier-intro {
+        max-width: none;
+
+        margin-bottom: 60px;
+
+        padding: 25px 20px;
+    }
+
+
+    #environment-page .dossier-intro h2 {
+        font-size: 28px;
+
+        line-height: 1.1;
+    }
+
+
+    #environment-page .dossier-intro p {
+        font-size: 11px;
+
+        line-height: 1.75;
+    }
+
+
+    #environment-page .dossier-intro .lead-text {
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------------------------------
+       ENVIRONMENT
+       UNE SEULE COLONNE
+       ----------------------------------------------------- */
+
+    #environment-page .environment-entry,
+    #environment-page .environment-left,
+    #environment-page .environment-right {
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+            "video"
+            "info";
+
+        row-gap: 35px;
+
+        column-gap: 0;
+
+        min-height: 0;
+
+        margin-bottom: 80px;
+
+        padding: 35px 25px;
+    }
+
+
+    /* -----------------------------------------------------
+       VIDÉO
+       ----------------------------------------------------- */
+
+    #environment-page .environment-video {
+        width: 196px !important;
+        max-width: 196px !important;
+
+        justify-self: center;
+
+        padding: 7px !important;
+    }
+
+
+    #environment-page .environment-video video {
+        width: 180px !important;
+        height: 320px !important;
+
+        min-width: 180px !important;
+        max-width: 180px !important;
+
+        min-height: 320px !important;
+        max-height: 320px !important;
+
+        margin: 10px auto;
+
+        object-fit: cover !important;
+    }
+
+
+    /* -----------------------------------------------------
+       INFOS
+       ----------------------------------------------------- */
+
+    #environment-page .environment-info {
+        max-width: 100%;
+
+        width: 100%;
+    }
+
+
+    #environment-page .environment-info h2 {
+        font-size: 27px;
+    }
+
+
+    #environment-page .environment-info p {
+        font-size: 11px;
+
+        line-height: 1.75;
+    }
+
+
+    /* -----------------------------------------------------
+       DATA
+       ----------------------------------------------------- */
+
+    #environment-page .environment-data {
+        gap: 6px;
+    }
+
+
+    #environment-page .environment-data span {
+        font-size: 7px;
+
+        padding: 6px 7px;
+    }
+
+
+    /* -----------------------------------------------------
+       SÉPARATION
+       ----------------------------------------------------- */
+
+    #environment-page .environment-entry:not(:last-child)::after {
+        bottom: -45px;
+
+        height: 32px;
+    }
+
+}
+
+
+/* =========================================================
+   360 PX
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    #environment-page {
+        padding: 60px 0 80px;
+    }
+
+
+    /* -----------------------------------------------------
+       CONTENU
+       ----------------------------------------------------- */
+
+    #environment-page > .section-content {
+        width: calc(100% - 20px);
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER
+       ----------------------------------------------------- */
+
+    #environment-page .classified-header {
+        padding: 18px 14px 20px;
+
+        margin-bottom: 35px;
+    }
+
+
+    #environment-page .classified-topline {
+        font-size: 8px;
+
+        letter-spacing: 0.12em;
+    }
+
+
+    #environment-page .classified-header .section-label {
+        font-size: 8px;
+
+        letter-spacing: 0.15em;
+    }
+
+
+    #environment-page .classified-header h1 {
+        font-size: 34px;
+
+        letter-spacing: -0.035em;
+    }
+
+
+    #environment-page .classified-status {
+        gap: 7px;
+
+        font-size: 8px;
+
+        letter-spacing: 0.1em;
+    }
+
+
+    /* -----------------------------------------------------
+       META
+       ----------------------------------------------------- */
+
+    #environment-page .dossier-meta {
+        margin-bottom: 35px;
+    }
+
+
+    #environment-page .dossier-meta > div {
+        min-height: 58px;
+
+        padding: 12px 14px;
+    }
+
+
+    #environment-page .dossier-meta span {
+        font-size: 8px;
+    }
+
+
+    #environment-page .dossier-meta strong {
+        font-size: 11px;
+    }
+
+
+    /* -----------------------------------------------------
+       INTRO
+       ----------------------------------------------------- */
+
+    #environment-page .dossier-intro {
+        padding: 20px 15px;
+
+        margin-bottom: 45px;
+    }
+
+
+    #environment-page .dossier-number {
+        font-size: 8px;
+    }
+
+
+    #environment-page .dossier-intro h2 {
+        font-size: 23px;
+
+        line-height: 1.1;
+    }
+
+
+    #environment-page .dossier-intro p {
+        font-size: 10px;
+
+        line-height: 1.7;
+    }
+
+
+    #environment-page .dossier-intro .lead-text {
+        font-size: 11px;
+    }
+
+
+    #environment-page .dossier-intro .warning-text {
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------------------------------
+       BLOCS ENVIRONNEMENT
+       ----------------------------------------------------- */
+
+    #environment-page .environment-entry,
+    #environment-page .environment-left,
+    #environment-page .environment-right {
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+            "video"
+            "info";
+
+        row-gap: 28px;
+
+        margin-bottom: 65px;
+
+        padding: 28px 14px;
+    }
+
+
+    /* -----------------------------------------------------
+       VIDÉO — TOUJOURS 180 × 320
+       ----------------------------------------------------- */
+
+    #environment-page .environment-video {
+        width: 196px !important;
+        min-width: 196px !important;
+        max-width: 196px !important;
+
+        padding: 7px !important;
+
+        justify-self: center;
+    }
+
+
+    #environment-page .environment-video video {
+        width: 180px !important;
+        min-width: 180px !important;
+        max-width: 180px !important;
+
+        height: 320px !important;
+        min-height: 320px !important;
+        max-height: 320px !important;
+
+        aspect-ratio: 9 / 16 !important;
+
+        object-fit: cover !important;
+
+        margin: 10px auto !important;
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER VIDÉO
+       ----------------------------------------------------- */
+
+    #environment-page .environment-video-header {
+        height: 27px;
+
+        padding: 0 6px;
+
+        gap: 5px;
+
+        font-size: 7px;
+
+        letter-spacing: 0.05em;
+    }
+
+
+    /* -----------------------------------------------------
+       FOOTER VIDÉO
+       ----------------------------------------------------- */
+
+    #environment-page .environment-video-footer {
+        min-height: 25px;
+
+        padding: 0 6px;
+
+        font-size: 7px;
+    }
+
+
+    /* -----------------------------------------------------
+       INFOS
+       ----------------------------------------------------- */
+
+    #environment-page .environment-info h2 {
+        font-size: 23px;
+
+        line-height: 1.08;
+    }
+
+
+    #environment-page .environment-number {
+        font-size: 8px;
+
+        padding: 5px 7px;
+    }
+
+
+    #environment-page .environment-info p {
+        font-size: 10px;
+
+        line-height: 1.7;
+
+        margin-bottom: 20px;
+    }
+
+
+    /* -----------------------------------------------------
+       DATA
+       ----------------------------------------------------- */
+
+    #environment-page .environment-data {
+        gap: 5px;
+
+        padding-top: 14px;
+    }
+
+
+    #environment-page .environment-data span {
+        padding: 5px 6px;
+
+        font-size: 7px;
+
+        letter-spacing: 0.04em;
+    }
+
+
+    #environment-page .environment-data strong {
+        font-size: 7px;
+    }
+
+
+    /* -----------------------------------------------------
+       SÉPARATION
+       ----------------------------------------------------- */
+
+    #environment-page .environment-entry:not(:last-child)::after {
+        bottom: -38px;
+
+        height: 27px;
+    }
+
+}
+/* =========================================================
+   FIN — RESPONSIVE PAGE ENVIRONNEMENT
+   ========================================================= */
+
+
+
 
 /* =========================================================
                     CORRECTION BUGS MOBILE
