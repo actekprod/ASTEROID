@@ -1,6 +1,8 @@
 /* =========================================================
    ENVIRONMENT PAGE
    ASTÉROÏD destroyer
+   CSS PRINCIPAL UNIQUEMENT
+   PAS DE RESPONSIVE ICI
    ========================================================= */
 
 
@@ -9,27 +11,24 @@
    ========================================================= */
 
 #environment-page {
-    --environment-green: #7cff9b;
-    --environment-green-soft: rgba(124, 255, 155, 0.55);
-    --environment-green-faint: rgba(124, 255, 155, 0.08);
+    --env-green: #7cff9b;
+    --env-green-soft: rgba(124, 255, 155, 0.22);
+    --env-green-faint: rgba(124, 255, 155, 0.06);
 
-    --environment-red: #ff4d5a;
-    --environment-red-soft: rgba(255, 77, 90, 0.5);
+    --env-cyan: #62eaff;
+    --env-red: #ff4d5a;
+    --env-yellow: #e6ff75;
 
-    --environment-cyan: #62eaff;
-    --environment-yellow: #e6ff75;
+    --env-bg: #050708;
+    --env-panel: rgba(7, 12, 14, 0.94);
 
-    --environment-bg: #050708;
-    --environment-panel: rgba(7, 12, 14, 0.94);
-    --environment-panel-light: rgba(11, 18, 20, 0.92);
+    --env-text: #d8e6dc;
+    --env-muted: #81938a;
 
-    --environment-border: rgba(124, 255, 155, 0.22);
-    --environment-border-strong: rgba(124, 255, 155, 0.55);
+    --env-border: rgba(124, 255, 155, 0.20);
+    --env-border-strong: rgba(124, 255, 155, 0.55);
 
-    --environment-text: #d8e6dc;
-    --environment-text-soft: #81938a;
-
-    --environment-width: 1320px;
+    --env-max-width: 1320px;
 }
 
 
@@ -39,9 +38,13 @@
 
 #environment-page {
     position: relative;
+
     width: 100%;
     min-height: 100vh;
+
     padding: 110px 0 160px;
+
+    color: var(--env-text);
 
     background:
         radial-gradient(
@@ -56,18 +59,17 @@
             #030506 100%
         );
 
-    color: var(--environment-text);
-
     overflow: hidden;
 }
 
 
 /* =========================================================
-   GRILLE TECHNIQUE DE FOND
+   GRILLE DE FOND
    ========================================================= */
 
 #environment-page::before {
     content: "";
+
     position: absolute;
     inset: 0;
 
@@ -89,17 +91,11 @@
     background-size:
         70px 70px,
         70px 70px;
-
-    mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent 90%
-    );
 }
 
 
 /* =========================================================
-   LIGNES DE SCAN
+   SCANLINES
    ========================================================= */
 
 #environment-page::after {
@@ -123,7 +119,7 @@
 
 
 /* =========================================================
-   CONTENU PRINCIPAL
+   CONTENU
    ========================================================= */
 
 #environment-page > .section-content {
@@ -132,7 +128,7 @@
 
     width: min(
         calc(100% - 80px),
-        var(--environment-width)
+        var(--env-max-width)
     );
 
     margin: 0 auto;
@@ -140,7 +136,7 @@
 
 
 /* =========================================================
-   CLASSIFIED HEADER
+   HEADER
    ========================================================= */
 
 #environment-page .classified-header {
@@ -149,9 +145,10 @@
     width: 100%;
 
     margin-bottom: 70px;
+
     padding: 26px 30px 32px;
 
-    border: 1px solid var(--environment-border);
+    border: 1px solid var(--env-border);
 
     background:
         linear-gradient(
@@ -168,7 +165,7 @@
 
 
 /* =========================================================
-   HEADER CORNER
+   COINS HEADER
    ========================================================= */
 
 #environment-page .classified-header::before,
@@ -179,24 +176,24 @@
 
     width: 18px;
     height: 18px;
-
-    pointer-events: none;
 }
+
 
 #environment-page .classified-header::before {
     top: -1px;
     left: -1px;
 
-    border-top: 2px solid var(--environment-green);
-    border-left: 2px solid var(--environment-green);
+    border-top: 2px solid var(--env-green);
+    border-left: 2px solid var(--env-green);
 }
+
 
 #environment-page .classified-header::after {
     right: -1px;
     bottom: -1px;
 
-    border-right: 2px solid var(--environment-green);
-    border-bottom: 2px solid var(--environment-green);
+    border-right: 2px solid var(--env-green);
+    border-bottom: 2px solid var(--env-green);
 }
 
 
@@ -206,8 +203,10 @@
 
 #environment-page .classified-topline {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     gap: 30px;
 
     padding-bottom: 18px;
@@ -215,7 +214,7 @@
 
     border-bottom: 1px solid rgba(124, 255, 155, 0.12);
 
-    color: var(--environment-green);
+    color: var(--env-green);
 
     font-family:
         "Courier New",
@@ -237,7 +236,7 @@
 #environment-page .classified-header .section-label {
     margin: 0 0 12px;
 
-    color: var(--environment-cyan);
+    color: var(--env-cyan);
 
     font-family:
         "Courier New",
@@ -253,7 +252,7 @@
 
 
 /* =========================================================
-   TITRE
+   H1
    ========================================================= */
 
 #environment-page .classified-header h1 {
@@ -265,7 +264,7 @@
         "Courier New",
         monospace;
 
-    font-size: clamp(42px, 6vw, 82px);
+    font-size: 72px;
 
     line-height: 0.95;
 
@@ -286,12 +285,14 @@
 
 #environment-page .classified-status {
     display: flex;
+
     align-items: center;
+
     gap: 10px;
 
     margin-top: 28px;
 
-    color: var(--environment-green);
+    color: var(--env-green);
 
     font-family:
         "Courier New",
@@ -304,40 +305,35 @@
 }
 
 
-/* =========================================================
-   STATUS DOT
-   ========================================================= */
-
 #environment-page .status-dot {
+    display: inline-block;
+
     width: 8px;
     height: 8px;
 
-    display: inline-block;
-
     border-radius: 50%;
 
-    background: var(--environment-green);
+    background: var(--env-green);
 
     box-shadow:
-        0 0 6px var(--environment-green),
-        0 0 16px var(--environment-green);
+        0 0 6px var(--env-green),
+        0 0 16px var(--env-green);
 
-    animation: environmentStatusPulse 1.8s infinite;
+    animation: envStatusPulse 1.8s infinite;
 }
 
 
-@keyframes environmentStatusPulse {
+@keyframes envStatusPulse {
 
     0%,
     100% {
         opacity: 1;
-        transform: scale(1);
     }
 
     50% {
-        opacity: 0.45;
-        transform: scale(0.75);
+        opacity: 0.35;
     }
+
 }
 
 
@@ -353,7 +349,7 @@
 
 
 /* =========================================================
-   DOSSIER META
+   META
    ========================================================= */
 
 #environment-page .dossier-meta {
@@ -364,8 +360,8 @@
 
     margin-bottom: 55px;
 
-    border-top: 1px solid var(--environment-border);
-    border-bottom: 1px solid var(--environment-border);
+    border-top: 1px solid var(--env-border);
+    border-bottom: 1px solid var(--env-border);
 }
 
 
@@ -373,24 +369,26 @@
     min-height: 82px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
 
     gap: 7px;
 
     padding: 15px 20px;
 
-    border-right: 1px solid var(--environment-border);
+    border-right: 1px solid var(--env-border);
 }
 
 
 #environment-page .dossier-meta > div:last-child {
-    border-right: 0;
+    border-right: none;
 }
 
 
 #environment-page .dossier-meta span {
-    color: var(--environment-text-soft);
+    color: var(--env-muted);
 
     font-family:
         "Courier New",
@@ -405,7 +403,7 @@
 
 
 #environment-page .dossier-meta strong {
-    color: var(--environment-green);
+    color: var(--env-green);
 
     font-family:
         "Courier New",
@@ -418,7 +416,7 @@
 
 
 #environment-page .dossier-meta .danger-text {
-    color: var(--environment-red);
+    color: var(--env-red);
 }
 
 
@@ -435,7 +433,7 @@
 
     padding: 34px 40px;
 
-    border-left: 2px solid var(--environment-green);
+    border-left: 2px solid var(--env-green);
 
     background:
         linear-gradient(
@@ -451,7 +449,7 @@
 
     margin-bottom: 15px;
 
-    color: var(--environment-cyan);
+    color: var(--env-cyan);
 
     font-family:
         "Courier New",
@@ -473,11 +471,9 @@
         "Courier New",
         monospace;
 
-    font-size: clamp(24px, 3vw, 38px);
+    font-size: 38px;
 
     text-transform: uppercase;
-
-    letter-spacing: 0.02em;
 }
 
 
@@ -486,7 +482,7 @@
 
     margin: 0 0 14px;
 
-    color: var(--environment-text-soft);
+    color: var(--env-muted);
 
     font-family:
         "Courier New",
@@ -508,7 +504,7 @@
 #environment-page .dossier-intro .warning-text {
     margin-top: 25px;
 
-    color: var(--environment-red);
+    color: var(--env-red);
 
     font-size: 11px;
     font-weight: 700;
@@ -518,7 +514,7 @@
 
 
 /* =========================================================
-   ENVIRONMENT ENTRIES
+   ENVIRONMENT ENTRY
    ========================================================= */
 
 #environment-page .environment-entry {
@@ -526,7 +522,7 @@
 
     width: 100%;
 
-    min-height: 380px;
+    min-height: 420px;
 
     display: grid;
 
@@ -540,7 +536,7 @@
 
     padding: 50px 55px;
 
-    border: 1px solid var(--environment-border);
+    border: 1px solid var(--env-border);
 
     background:
         linear-gradient(
@@ -553,8 +549,6 @@
     box-shadow:
         0 20px 70px rgba(0, 0, 0, 0.28);
 
-    overflow: hidden;
-
     transition:
         border-color 0.3s ease,
         box-shadow 0.3s ease,
@@ -563,11 +557,11 @@
 
 
 /* =========================================================
-   HOVER ENTRY
+   HOVER
    ========================================================= */
 
 #environment-page .environment-entry:hover {
-    border-color: var(--environment-border-strong);
+    border-color: var(--env-border-strong);
 
     box-shadow:
         0 20px 70px rgba(0, 0, 0, 0.38),
@@ -578,7 +572,7 @@
 
 
 /* =========================================================
-   ENTRY DECORATION
+   BARRE LATERALE
    ========================================================= */
 
 #environment-page .environment-entry::before {
@@ -595,7 +589,7 @@
         linear-gradient(
             to bottom,
             transparent,
-            var(--environment-green),
+            var(--env-green),
             transparent
         );
 
@@ -614,8 +608,8 @@
 
 
 /* =========================================================
-   ALTERNANCE
-   VIDÉO GAUCHE / TEXTE DROITE
+   GAUCHE
+   VIDEO | TEXTE
    ========================================================= */
 
 #environment-page .environment-left {
@@ -625,8 +619,8 @@
 
 
 /* =========================================================
-   ALTERNANCE
-   TEXTE GAUCHE / VIDÉO DROITE
+   DROITE
+   TEXTE | VIDEO
    ========================================================= */
 
 #environment-page .environment-right {
@@ -636,25 +630,23 @@
 
 
 /* =========================================================
-   VIDÉO
+   BLOC VIDEO
    ========================================================= */
 
 #environment-page .environment-video {
     grid-area: video;
 
-    width: 320px;
-    height: auto;
+    width: 196px;
 
     justify-self: center;
 
     position: relative;
 
-    padding: 8px;
+    padding: 7px;
 
-    border: 1px solid var(--environment-border-strong);
+    border: 1px solid var(--env-border-strong);
 
-    background:
-        #020405;
+    background: #020405;
 
     box-shadow:
         0 0 0 1px rgba(124, 255, 155, 0.035),
@@ -690,6 +682,7 @@
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     gap: 10px;
@@ -698,13 +691,14 @@
 
     border-bottom: 1px solid rgba(124, 255, 155, 0.2);
 
-    color: var(--environment-green);
+    color: var(--env-green);
 
     font-family:
         "Courier New",
         monospace;
 
     font-size: 8px;
+
     font-weight: 700;
 
     letter-spacing: 0.1em;
@@ -715,16 +709,26 @@
 
 /* =========================================================
    VIDEO
-   EXACTEMENT 180 x 320
+   IMPÉRATIF :
+   LARGEUR = 180px
+   HAUTEUR = 320px
    ========================================================= */
 
 #environment-page .environment-video video {
     display: block;
 
-    width: 180px;
-    height: 320px;
+    width: 180px !important;
+    height: 320px !important;
+
+    min-width: 180px;
+    max-width: 180px;
+
+    min-height: 320px;
+    max-height: 320px;
 
     margin: 10px auto;
+
+    padding: 0;
 
     object-fit: cover;
 
@@ -740,7 +744,7 @@
 
 
 /* =========================================================
-   VIDEO FOOTER
+   FOOTER VIDEO
    ========================================================= */
 
 #environment-page .environment-video-footer {
@@ -751,13 +755,14 @@
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     padding: 0 8px;
 
     border-top: 1px solid rgba(124, 255, 155, 0.2);
 
-    color: var(--environment-text-soft);
+    color: var(--env-muted);
 
     font-family:
         "Courier New",
@@ -770,12 +775,12 @@
 
 
 #environment-page .environment-video-footer span:last-child {
-    color: var(--environment-green);
+    color: var(--env-green);
 }
 
 
 /* =========================================================
-   VIDEO CORNERS
+   COINS DU BLOC VIDEO
    ========================================================= */
 
 #environment-page .environment-video::before,
@@ -797,8 +802,8 @@
     top: -1px;
     left: -1px;
 
-    border-top: 2px solid var(--environment-green);
-    border-left: 2px solid var(--environment-green);
+    border-top: 2px solid var(--env-green);
+    border-left: 2px solid var(--env-green);
 }
 
 
@@ -806,8 +811,8 @@
     right: -1px;
     bottom: -1px;
 
-    border-right: 2px solid var(--environment-green);
-    border-bottom: 2px solid var(--environment-green);
+    border-right: 2px solid var(--env-green);
+    border-bottom: 2px solid var(--env-green);
 }
 
 
@@ -827,7 +832,7 @@
 
 
 /* =========================================================
-   NUMÉRO
+   NUMERO SECTEUR
    ========================================================= */
 
 #environment-page .environment-number {
@@ -839,7 +844,7 @@
 
     border: 1px solid rgba(98, 234, 255, 0.28);
 
-    color: var(--environment-cyan);
+    color: var(--env-cyan);
 
     background: rgba(98, 234, 255, 0.035);
 
@@ -848,6 +853,7 @@
         monospace;
 
     font-size: 9px;
+
     font-weight: 700;
 
     letter-spacing: 0.16em;
@@ -867,7 +873,7 @@
         "Courier New",
         monospace;
 
-    font-size: clamp(23px, 3vw, 36px);
+    font-size: 34px;
 
     line-height: 1.05;
 
@@ -880,7 +886,7 @@
 
 
 /* =========================================================
-   TEXTE
+   DESCRIPTION
    ========================================================= */
 
 #environment-page .environment-info p {
@@ -899,7 +905,7 @@
 
 
 /* =========================================================
-   DONNÉES
+   DATA
    ========================================================= */
 
 #environment-page .environment-data {
@@ -943,24 +949,14 @@
 
 
 #environment-page .environment-data strong {
-    color: var(--environment-green);
+    color: var(--env-green);
 
     font-size: 8px;
 }
 
 
 /* =========================================================
-   RISQUE CRITIQUE
-   ========================================================= */
-
-#environment-page .environment-right .environment-data span:last-child strong,
-#environment-page .environment-left .environment-data span:last-child strong {
-    color: var(--environment-yellow);
-}
-
-
-/* =========================================================
-   ENVIRONNEMENT FINAL
+   SECTEUR FINAL
    ========================================================= */
 
 #environment-page .environment-final {
@@ -983,7 +979,7 @@
         linear-gradient(
             to bottom,
             transparent,
-            var(--environment-red),
+            var(--env-red),
             transparent
         );
 }
@@ -998,7 +994,7 @@
 
 
 #environment-page .environment-final .environment-number {
-    color: var(--environment-red);
+    color: var(--env-red);
 
     border-color: rgba(255, 77, 90, 0.35);
 
@@ -1007,7 +1003,7 @@
 
 
 /* =========================================================
-   SÉPARATION ENTRE SECTEURS
+   SEPARATION ENTRE LES SECTEURS
    ========================================================= */
 
 #environment-page .environment-entry:not(:last-child)::after {
@@ -1016,7 +1012,6 @@
     position: absolute;
 
     left: 50%;
-
     bottom: -56px;
 
     width: 1px;
@@ -1025,26 +1020,9 @@
     background:
         linear-gradient(
             to bottom,
-            var(--environment-border-strong),
+            var(--env-border-strong),
             transparent
         );
 
     transform: translateX(-50%);
-}
-
-/* =========================================================
-   ACCESSIBILITÉ
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    #environment-page *,
-    #environment-page *::before,
-    #environment-page *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-
 }
