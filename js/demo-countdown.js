@@ -373,10 +373,14 @@ function formatNumber(value) {
    DÉVERROUILLAGE DE LA DÉMO
    ========================================================= */
 
+/* =========================================================
+   DÉVERROUILLAGE DE LA DÉMO
+   ========================================================= */
+
 function activateDemoRelease() {
 
     /*
-     * Empêche la fonction de se déclencher plusieurs fois.
+     * Empêche plusieurs déclenchements.
      */
 
     if (
@@ -391,9 +395,9 @@ function activateDemoRelease() {
     document.body.dataset.demoReleased = "true";
 
 
-    /*
-     * Le compteur disparaît.
-     */
+    /* =====================================================
+       COMPTE À REBOURS
+       ===================================================== */
 
     if (countdownPanel) {
 
@@ -401,27 +405,53 @@ function activateDemoRelease() {
             "demo-countdown-finished"
         );
 
+        /*
+         * On masque réellement le panneau après
+         * le déclenchement.
+         */
+
+        setTimeout(() => {
+
+            countdownPanel.hidden = true;
+
+        }, 500);
+
     }
 
 
-    /*
-     * La section téléchargement apparaît.
-     */
+    /* =====================================================
+       SECTION TÉLÉCHARGEMENT
+       ===================================================== */
 
     if (releaseSection) {
 
+        /*
+         * Très important :
+         * on retire l'attribut hidden.
+         */
+
         releaseSection.hidden = false;
 
-        releaseSection.classList.add(
-            "demo-release-visible"
-        );
+
+        /*
+         * On force le navigateur à reconnaître
+         * le nouvel état avant l'animation.
+         */
+
+        requestAnimationFrame(() => {
+
+            releaseSection.classList.add(
+                "demo-release-visible"
+            );
+
+        });
 
     }
 
 
-    /*
-     * Mise à jour des statuts.
-     */
+    /* =====================================================
+       STATUT PRINCIPAL
+       ===================================================== */
 
     if (statusText) {
 
@@ -431,6 +461,10 @@ function activateDemoRelease() {
     }
 
 
+    /* =====================================================
+       STATUT DOWNLOAD
+       ===================================================== */
+
     if (releaseStatus) {
 
         releaseStatus.textContent =
@@ -439,12 +473,9 @@ function activateDemoRelease() {
     }
 
 
-    /*
-     * Petit événement personnalisé.
-     *
-     * Cela permettra d'ajouter plus tard une animation
-     * spéciale de sortie sans modifier le moteur du compteur.
-     */
+    /* =====================================================
+       ÉVÉNEMENT SYSTÈME
+       ===================================================== */
 
     document.dispatchEvent(
         new CustomEvent(
@@ -453,29 +484,6 @@ function activateDemoRelease() {
     );
 
 }
-
-/* =========================================================
-   MODE TEST
-   ========================================================= */
-
-/*
- * true  = simulation de la fin du compte à rebours
- * false = véritable date de sortie
- *
- * IMPORTANT :
- * laisser false sur le site final.
- */
-
-const DEMO_TEST_MODE = true;
-
-
-/*
- * Durée du compte à rebours de test.
- *
- * Ici : 15 secondes.
- */
-
-const DEMO_TEST_SECONDS = 15;
 
 /* =========================================================
    FIN DU SYSTÈME
