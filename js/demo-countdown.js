@@ -518,10 +518,7 @@ function activateDemoRelease() {
      */
 
     if (
-
-        document.body.dataset
-            .demoReleased === "true"
-
+        document.body.dataset.demoReleased === "true"
     ) {
 
         return;
@@ -529,12 +526,12 @@ function activateDemoRelease() {
     }
 
 
-    document.body.dataset
-        .demoReleased = "true";
+    document.body.dataset.demoReleased =
+        "true";
 
 
     /* =====================================================
-       COMPTEUR
+       COMPTE À REBOURS
        ===================================================== */
 
     if (countdownPanel) {
@@ -547,41 +544,36 @@ function activateDemoRelease() {
 
 
     /* =====================================================
-       SECTION TÉLÉCHARGEMENT
+       SECTION DOWNLOAD
        ===================================================== */
 
     if (releaseSection) {
 
         /*
-         * On retire réellement hidden.
+         * Retire le hidden HTML.
          */
 
-        releaseSection.hidden =
-            false;
+        releaseSection.hidden = false;
 
 
         /*
-         * Laisse le navigateur appliquer
-         * le changement avant l'animation.
+         * Déclenche l'animation CSS après
+         * l'apparition effective de la section.
          */
 
-        requestAnimationFrame(
+        requestAnimationFrame(() => {
 
-            () => {
+            releaseSection.classList.add(
+                "demo-release-visible"
+            );
 
-                releaseSection.classList.add(
-                    "demo-release-visible"
-                );
-
-            }
-
-        );
+        });
 
     }
 
 
     /* =====================================================
-       STATUT PRINCIPAL
+       STATUT SYSTÈME
        ===================================================== */
 
     if (statusText) {
