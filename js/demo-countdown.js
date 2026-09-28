@@ -373,32 +373,21 @@ function formatNumber(value) {
    DÉVERROUILLAGE DE LA DÉMO
    ========================================================= */
 
-/* =========================================================
-   DÉVERROUILLAGE DE LA DÉMO
-   VERSION DIAGNOSTIC
-   ========================================================= */
-
 function activateDemoRelease() {
 
-    console.log(
-        "ASTEROID // RELEASE TRIGGERED"
-    );
+    /* Empêche un double déclenchement */
+
+    if (
+        document.body.dataset.demoReleased === "true"
+    ) {
+
+        return;
+
+    }
 
 
-    /* =====================================================
-       VÉRIFICATION DE LA SECTION
-       ===================================================== */
-
-    console.log(
-        "Section téléchargement :",
-        releaseSection
-    );
-
-
-    console.log(
-        "Panneau compteur :",
-        countdownPanel
-    );
+    document.body.dataset.demoReleased =
+        "true";
 
 
     /* =====================================================
@@ -407,7 +396,9 @@ function activateDemoRelease() {
 
     if (countdownPanel) {
 
-        countdownPanel.style.display = "none";
+        countdownPanel.classList.add(
+            "demo-countdown-finished"
+        );
 
     }
 
@@ -418,24 +409,7 @@ function activateDemoRelease() {
 
     if (releaseSection) {
 
-        /*
-         * Suppression directe de l'attribut HTML hidden.
-         */
-
-        releaseSection.removeAttribute("hidden");
-
-
-        /*
-         * Sécurité supplémentaire :
-         * on force temporairement l'affichage.
-         */
-
-        releaseSection.style.display = "block";
-
-
-        /*
-         * Animation.
-         */
+        releaseSection.hidden = false;
 
         requestAnimationFrame(() => {
 
@@ -449,7 +423,7 @@ function activateDemoRelease() {
 
 
     /* =====================================================
-       STATUT
+       STATUT PRINCIPAL
        ===================================================== */
 
     if (statusText) {
@@ -460,6 +434,10 @@ function activateDemoRelease() {
     }
 
 
+    /* =====================================================
+       STATUT TÉLÉCHARGEMENT
+       ===================================================== */
+
     if (releaseStatus) {
 
         releaseStatus.textContent =
@@ -467,21 +445,7 @@ function activateDemoRelease() {
 
     }
 
-
-    /* =====================================================
-       MARQUEUR
-       ===================================================== */
-
-    document.body.dataset.demoReleased =
-        "true";
-
-
-    console.log(
-        "ASTEROID // DEMO ACCESS UNLOCKED"
-    );
-
 }
-
 
 /* =========================================================
    FIN DU SYSTÈME
