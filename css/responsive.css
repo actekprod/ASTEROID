@@ -8317,6 +8317,577 @@
    ========================================================= */
 
 
+/* =========================================================
+   ASTÉROÏD DESTROYER
+   RESPONSIVE — DEMO PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   TABLETTES / PETITS ÉCRANS
+   MAX 1024px
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+    /* -----------------------------------------------------
+       PAGE
+       ----------------------------------------------------- */
+
+    #demo-page {
+        padding: 100px 0 90px;
+    }
+
+
+    .demo-container {
+        width: min(92%, 900px);
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER
+       ----------------------------------------------------- */
+
+    .demo-header {
+        margin-bottom: 55px;
+        padding: 45px 35px 38px;
+    }
+
+
+    .demo-header h1 {
+        font-size: clamp(3.8rem, 11vw, 6.5rem);
+    }
+
+
+    .demo-header-description {
+        max-width: 700px;
+        font-size: 0.95rem;
+    }
+
+
+    .demo-release-info {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+
+    /* -----------------------------------------------------
+       COMPTEUR
+       ----------------------------------------------------- */
+
+    .demo-countdown-panel {
+        padding: 25px 25px 22px;
+    }
+
+
+    .demo-countdown {
+        gap: 12px;
+        min-height: 250px;
+        padding: 35px 5px;
+    }
+
+
+    .demo-countdown-unit {
+        min-width: 0;
+        flex: 1;
+        padding: 18px 10px;
+    }
+
+
+    .demo-countdown-value {
+        font-size: clamp(2.5rem, 7vw, 5rem);
+    }
+
+
+    .demo-countdown-separator {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+
+
+    /* -----------------------------------------------------
+       DOWNLOAD
+       ----------------------------------------------------- */
+
+    .demo-download-panel {
+        grid-template-columns: 280px 1fr;
+    }
+
+
+    .demo-game-visual {
+        min-height: 360px;
+        padding: 25px;
+    }
+
+
+    .demo-game-visual-frame {
+        width: 250px;
+        height: 250px;
+    }
+
+
+    .demo-game-visual-frame img {
+        width: 250px;
+        height: 250px;
+    }
+
+
+    .demo-download-info {
+        padding: 35px;
+    }
+
+
+    .demo-download-data {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   TABLETTES VERTICALES / MOBILES
+   MAX 700px
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    /* -----------------------------------------------------
+       PAGE
+       ----------------------------------------------------- */
+
+    #demo-page {
+        padding: 85px 0 70px;
+    }
+
+
+    .demo-container {
+        width: 94%;
+    }
+
+
+    /* -----------------------------------------------------
+       CLASSIFICATION
+       ----------------------------------------------------- */
+
+    .demo-classification {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        padding: 11px 14px;
+    }
+
+
+    .demo-classification-right {
+        flex-wrap: wrap;
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER
+       ----------------------------------------------------- */
+
+    .demo-header {
+        margin-bottom: 45px;
+        padding: 35px 25px 30px;
+    }
+
+
+    .demo-file-code {
+        font-size: 0.55rem;
+        line-height: 1.6;
+    }
+
+
+    .demo-eyebrow {
+        font-size: 0.58rem;
+    }
+
+
+    .demo-header h1 {
+        font-size: clamp(3.2rem, 16vw, 5.5rem);
+    }
+
+
+    .demo-header-description {
+        font-size: 0.82rem;
+        line-height: 1.7;
+        letter-spacing: 0.06em;
+    }
+
+
+    .demo-release-info {
+        font-size: 0.52rem;
+    }
+
+
+    /* -----------------------------------------------------
+       TITRES DE SECTION
+       ----------------------------------------------------- */
+
+    .demo-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 22px;
+    }
+
+
+    .demo-section-heading h2 {
+        font-size: 1.7rem;
+    }
+
+
+    .demo-section-status {
+        font-size: 0.52rem;
+    }
+
+
+    /* -----------------------------------------------------
+       COMPTEUR
+       ----------------------------------------------------- */
+
+    .demo-countdown-panel {
+        padding: 20px 15px 18px;
+    }
+
+
+    .demo-countdown-topline {
+        font-size: 0.5rem;
+    }
+
+
+    .demo-countdown {
+        gap: 5px;
+        min-height: 190px;
+        padding: 25px 0;
+    }
+
+
+    .demo-countdown-unit {
+        padding: 14px 5px;
+    }
+
+
+    .demo-countdown-value {
+        font-size: clamp(1.8rem, 9vw, 3.2rem);
+    }
+
+
+    .demo-countdown-label {
+        margin-top: 10px;
+        font-size: 0.45rem;
+        letter-spacing: 0.1em;
+    }
+
+
+    .demo-countdown-separator {
+        font-size: 1.8rem;
+    }
+
+
+    .demo-countdown-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.5rem;
+    }
+
+
+    /* -----------------------------------------------------
+       DOWNLOAD
+       ----------------------------------------------------- */
+
+    .demo-release-section {
+        margin-top: 60px;
+    }
+
+
+    .demo-download-panel {
+        grid-template-columns: 1fr;
+    }
+
+
+    .demo-game-visual {
+        min-height: auto;
+        padding: 30px 20px;
+        border-right: 0;
+        border-bottom: 1px solid var(--demo-border-soft);
+    }
+
+
+    .demo-game-visual-frame {
+        width: min(300px, 80vw);
+        height: min(300px, 80vw);
+    }
+
+
+    .demo-game-visual-frame img {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .demo-download-info {
+        padding: 30px 25px;
+    }
+
+
+    .demo-download-info::before {
+        display: none;
+    }
+
+
+    .demo-download-info h3 {
+        font-size: 1.8rem;
+    }
+
+
+    .demo-download-intro {
+        font-size: 0.76rem;
+    }
+
+
+    .demo-download-data {
+        grid-template-columns: 1fr;
+    }
+
+
+    .demo-download-data > div {
+        border-right: 0;
+        border-bottom: 1px solid var(--demo-border-soft);
+    }
+
+
+    .demo-download-data > div:last-child {
+        border-bottom: 0;
+    }
+
+
+    .demo-download-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* -----------------------------------------------------
+       FOOTER TECHNIQUE
+       ----------------------------------------------------- */
+
+    .demo-file-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   PETITS MOBILES
+   MAX 360px
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    /* -----------------------------------------------------
+       PAGE
+       ----------------------------------------------------- */
+
+    #demo-page {
+        padding: 75px 0 60px;
+    }
+
+
+    .demo-container {
+        width: 94%;
+    }
+
+
+    /* -----------------------------------------------------
+       CLASSIFICATION
+       ----------------------------------------------------- */
+
+    .demo-classification {
+        font-size: 0.52rem;
+    }
+
+
+    /* -----------------------------------------------------
+       HEADER
+       ----------------------------------------------------- */
+
+    .demo-header {
+        padding: 28px 18px 25px;
+    }
+
+
+    .demo-file-code {
+        font-size: 0.48rem;
+        letter-spacing: 0.1em;
+    }
+
+
+    .demo-eyebrow {
+        font-size: 0.5rem;
+        letter-spacing: 0.13em;
+    }
+
+
+    .demo-header h1 {
+        font-size: 3.1rem;
+        letter-spacing: 0.05em;
+    }
+
+
+    .demo-header-description {
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+    }
+
+
+    .demo-release-info {
+        font-size: 0.45rem;
+        letter-spacing: 0.08em;
+    }
+
+
+    /* -----------------------------------------------------
+       COMPTEUR
+       ----------------------------------------------------- */
+
+    .demo-countdown-panel {
+        padding: 16px 8px 15px;
+    }
+
+
+    .demo-countdown-topline {
+        font-size: 0.43rem;
+        letter-spacing: 0.08em;
+    }
+
+
+    .demo-countdown {
+        gap: 2px;
+        min-height: 150px;
+        padding: 20px 0;
+    }
+
+
+    .demo-countdown-unit {
+        padding: 10px 2px;
+    }
+
+
+    .demo-countdown-value {
+        font-size: 1.65rem;
+    }
+
+
+    .demo-countdown-label {
+        margin-top: 8px;
+        font-size: 0.38rem;
+        letter-spacing: 0.05em;
+    }
+
+
+    .demo-countdown-separator {
+        font-size: 1.25rem;
+    }
+
+
+    .demo-countdown-footer {
+        font-size: 0.42rem;
+        letter-spacing: 0.08em;
+    }
+
+
+    /* -----------------------------------------------------
+       DOWNLOAD
+       ----------------------------------------------------- */
+
+    .demo-release-section {
+        margin-top: 45px;
+    }
+
+
+    .demo-game-visual {
+        padding: 22px 12px;
+    }
+
+
+    .demo-game-visual-frame {
+        width: 240px;
+        height: 240px;
+    }
+
+
+    .demo-game-visual-frame img {
+        width: 240px;
+        height: 240px;
+    }
+
+
+    .demo-download-info {
+        padding: 25px 18px;
+    }
+
+
+    .demo-download-code {
+        font-size: 0.5rem;
+    }
+
+
+    .demo-download-info h3 {
+        font-size: 1.45rem;
+    }
+
+
+    .demo-download-intro {
+        font-size: 0.7rem;
+        line-height: 1.7;
+    }
+
+
+    .demo-download-data span {
+        font-size: 0.48rem;
+    }
+
+
+    .demo-download-data strong {
+        font-size: 0.58rem;
+    }
+
+
+    .demo-download-button {
+        padding: 15px 12px;
+        font-size: 0.55rem;
+        letter-spacing: 0.1em;
+    }
+
+
+    .demo-download-note {
+        font-size: 0.43rem;
+        line-height: 1.5;
+    }
+
+
+    /* -----------------------------------------------------
+       FOOTER
+       ----------------------------------------------------- */
+
+    .demo-file-footer {
+        font-size: 0.45rem;
+        letter-spacing: 0.08em;
+    }
+
+}
+
+
+/* =========================================================
+   FIN RESPONSIVE — DEMO
+   ========================================================= */
+
+
 
 /* =========================================================
                     CORRECTION BUGS MOBILE
