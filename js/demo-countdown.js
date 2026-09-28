@@ -63,21 +63,39 @@ if (
 
 function initDemoCountdown() {
 
-    /*
-     * La date est construite explicitement pour Europe/Paris.
-     *
-     * Le navigateur travaille ensuite avec un timestamp UTC.
-     */
+    let releaseTimestamp;
 
-    const releaseTimestamp =
-        getParisTimestamp(
-            DEMO_RELEASE.year,
-            DEMO_RELEASE.month,
-            DEMO_RELEASE.day,
-            DEMO_RELEASE.hour,
-            DEMO_RELEASE.minute,
-            DEMO_RELEASE.second
-        );
+
+    /* =====================================================
+       MODE TEST
+       ===================================================== */
+
+    if (DEMO_TEST_MODE) {
+
+        releaseTimestamp =
+            Date.now() +
+            (DEMO_TEST_SECONDS * 1000);
+
+    }
+
+
+    /* =====================================================
+       MODE RÉEL
+       ===================================================== */
+
+    else {
+
+        releaseTimestamp =
+            getParisTimestamp(
+                DEMO_RELEASE.year,
+                DEMO_RELEASE.month,
+                DEMO_RELEASE.day,
+                DEMO_RELEASE.hour,
+                DEMO_RELEASE.minute,
+                DEMO_RELEASE.second
+            );
+
+    }
 
 
     /*
@@ -91,21 +109,27 @@ function initDemoCountdown() {
      * Mise à jour chaque seconde.
      */
 
-    const countdownInterval = setInterval(() => {
+    const countdownInterval =
+        setInterval(() => {
 
-        const finished =
-            updateCountdown(releaseTimestamp);
+            const finished =
+                updateCountdown(
+                    releaseTimestamp
+                );
 
 
-        if (finished) {
+            if (finished) {
 
-            clearInterval(countdownInterval);
+                clearInterval(
+                    countdownInterval
+                );
 
-        }
+            }
 
-    }, 1000);
+        }, 1000);
 
 }
+
 
 
 /* =========================================================
@@ -430,6 +454,28 @@ function activateDemoRelease() {
 
 }
 
+/* =========================================================
+   MODE TEST
+   ========================================================= */
+
+/*
+ * true  = simulation de la fin du compte à rebours
+ * false = véritable date de sortie
+ *
+ * IMPORTANT :
+ * laisser false sur le site final.
+ */
+
+const DEMO_TEST_MODE = true;
+
+
+/*
+ * Durée du compte à rebours de test.
+ *
+ * Ici : 15 secondes.
+ */
+
+const DEMO_TEST_SECONDS = 15;
 
 /* =========================================================
    FIN DU SYSTÈME
