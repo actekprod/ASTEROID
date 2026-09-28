@@ -1793,6 +1793,82 @@
 
 }
 
+/* =========================================================
+   FIN DU COMPTE À REBOURS
+   ========================================================= */
+
+.demo-countdown-finished {
+
+    opacity: 0;
+
+    transform:
+        scale(0.96)
+        translateY(-12px);
+
+    filter:
+        blur(4px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        filter 0.6s ease;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   SECTION DE TÉLÉCHARGEMENT
+   ========================================================= */
+
+.demo-release-section[hidden] {
+
+    display: none;
+
+}
+
+
+.demo-release-section {
+
+    opacity: 0;
+
+    transform:
+        translateY(35px)
+        scale(0.97);
+
+    filter:
+        blur(8px);
+
+}
+
+
+/* =========================================================
+   SECTION ACTIVE
+   ========================================================= */
+
+.demo-release-section.demo-release-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter:
+        blur(0);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(
+            0.16,
+            1,
+            0.3,
+            1
+        ),
+        filter 0.9s ease;
+
+}
 
 /* =========================================================
    FIN DEMO CSS
