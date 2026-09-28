@@ -269,497 +269,413 @@
     <main>
 
 
-        <section
-            id="demo-page"
-            aria-labelledby="demo-title"
-        >
+        <section id="demo-page">
+
+    <div class="demo-container">
+
+        <!-- =================================================
+             CLASSIFICATION
+             ================================================= -->
+
+        <div class="demo-classification">
+
+            <div class="demo-classification-left">
+
+                <span class="demo-status-dot"></span>
+
+                <span>
+                    DEMO SYSTEM
+                </span>
+
+            </div>
+
+            <div class="demo-classification-right">
+
+                <span>
+                    RELEASE STATUS
+                </span>
+
+                <strong data-demo-status>
+                    COUNTDOWN ACTIVE
+                </strong>
+
+            </div>
+
+        </div>
 
 
-            <div class="demo-container">
+        <!-- =================================================
+             HEADER
+             ================================================= -->
+
+        <header class="demo-header">
+
+            <span class="demo-file-code">
+                ASTEROID.DESTROYER // DEMO-RELEASE-2026
+            </span>
+
+            <p class="demo-eyebrow">
+                CLASSIFIED RELEASE SEQUENCE
+            </p>
+
+            <h1>
+                DÉMO
+            </h1>
+
+            <p class="demo-header-description">
+                Les cinq premiers niveaux d'ASTÉROÏD destroyer
+                seront bientôt disponibles.
+            </p>
+
+            <div class="demo-header-line"></div>
+
+            <div class="demo-release-info">
+
+                <span>
+                    RELEASE DATE
+                </span>
+
+                <strong>
+                    05.10.2026 // 18:00 // EUROPE/PARIS
+                </strong>
+
+            </div>
+
+        </header>
 
 
-                <!-- =================================================
-                     BARRE DE CLASSIFICATION
-                     ================================================= -->
+        <!-- =================================================
+             COMPTE À REBOURS
+             ================================================= -->
 
-                <div class="demo-classification">
+        <section class="demo-countdown-section">
+
+            <div class="demo-section-heading">
+
+                <div>
+
+                    <span class="demo-section-number">
+                        01 // RELEASE SEQUENCE
+                    </span>
+
+                    <h2>
+                        Lancement
+                    </h2>
+
+                </div>
+
+                <span class="demo-section-status">
+                    COUNTDOWN ACTIVE
+                </span>
+
+            </div>
 
 
-                    <div class="demo-classification-left">
+            <div
+                class="demo-countdown-panel"
+                data-demo-countdown-panel
+            >
 
-                        <span
-                            class="demo-status-dot"
-                            aria-hidden="true"
-                        ></span>
+                <div class="demo-countdown-topline">
 
-                        <span>
-                            DEMO SYSTEM
-                        </span>
+                    <span>
+                        DEMO ACCESS PROTOCOL
+                    </span>
 
-                    </div>
-
-
-                    <div class="demo-classification-right">
-
-                        <span>
-                            STATUS //
-                        </span>
-
-                        <strong id="demo-system-status">
-                            STANDBY
-                        </strong>
-
-                    </div>
-
+                    <span>
+                        T-MINUS
+                    </span>
 
                 </div>
 
 
-                <!-- =================================================
-                     HEADER DE LA DÉMO
-                     ================================================= -->
-
-                <header class="demo-header">
-
-
-                    <span class="demo-file-code">
-                        FILE // AD-DEMO-2026
-                    </span>
-
-
-                    <p class="demo-eyebrow">
-                        ASTÉROÏD DESTROYER // PRE-RELEASE
-                    </p>
-
-
-                    <h1 id="demo-title">
-                        DEMO
-                    </h1>
-
-
-                    <p class="demo-header-description">
-                        Les SEPT premiers niveaux
-                        d'ASTÉROÏD destroyer arrivent.
-                    </p>
-
-
-                    <div
-                        class="demo-header-line"
-                        aria-hidden="true"
-                    ></div>
-
-
-                    <div class="demo-release-info">
-
-                        <span>
-                            RELEASE STATUS
-                        </span>
-
-                        <strong>
-                            AWAITING ACTIVATION
-                        </strong>
-
-                    </div>
-
-
-                </header>
-
-
-                <!-- =================================================
-                     COMPTE À REBOURS
-                     ================================================= -->
-
-                <section
-                    class="demo-countdown-section"
-                    id="demo-countdown-section"
-                    aria-labelledby="countdown-title"
+                <div
+                    class="demo-countdown"
+                    data-demo-countdown
                 >
 
+                    <!-- JOURS -->
 
-                    <div class="demo-section-heading">
-
-
-                        <div>
-
-                            <span class="demo-section-number">
-                                01 // COUNTDOWN
-                            </span>
-
-                            <h2 id="countdown-title">
-                                ACTIVATION
-                            </h2>
-
-                        </div>
-
+                    <div class="demo-countdown-unit">
 
                         <span
-                            class="demo-section-status"
-                            id="countdown-status"
+                            class="demo-countdown-value"
+                            data-demo-days
                         >
-                            SYSTEM STANDBY
+                            00
                         </span>
 
+                        <span class="demo-countdown-label">
+                            JOURS
+                        </span>
 
                     </div>
 
 
-                    <div class="demo-countdown-panel">
+                    <span class="demo-countdown-separator">
+                        :
+                    </span>
 
 
-                        <div class="demo-countdown-topline">
+                    <!-- HEURES -->
 
-                            <span>
-                                DEMO RELEASE SEQUENCE
-                            </span>
-
-                            <span>
-                                T-MINUS
-                            </span>
-
-                        </div>
-
-
-                        <div
-                            class="demo-countdown"
-                            id="demo-countdown"
-                            aria-live="polite"
-                            aria-label="Compte à rebours avant la sortie de la démo"
-                        >
-
-
-                            <!-- JOURS -->
-
-                            <div class="demo-countdown-unit">
-
-                                <span
-                                    class="demo-countdown-value"
-                                    id="countdown-days"
-                                >
-                                    00
-                                </span>
-
-                                <span class="demo-countdown-label">
-                                    JOURS
-                                </span>
-
-                            </div>
-
-
-                            <span
-                                class="demo-countdown-separator"
-                                aria-hidden="true"
-                            >
-                                :
-                            </span>
-
-
-                            <!-- HEURES -->
-
-                            <div class="demo-countdown-unit">
-
-                                <span
-                                    class="demo-countdown-value"
-                                    id="countdown-hours"
-                                >
-                                    00
-                                </span>
-
-                                <span class="demo-countdown-label">
-                                    HEURES
-                                </span>
-
-                            </div>
-
-
-                            <span
-                                class="demo-countdown-separator"
-                                aria-hidden="true"
-                            >
-                                :
-                            </span>
-
-
-                            <!-- MINUTES -->
-
-                            <div class="demo-countdown-unit">
-
-                                <span
-                                    class="demo-countdown-value"
-                                    id="countdown-minutes"
-                                >
-                                    00
-                                </span>
-
-                                <span class="demo-countdown-label">
-                                    MINUTES
-                                </span>
-
-                            </div>
-
-
-                            <span
-                                class="demo-countdown-separator"
-                                aria-hidden="true"
-                            >
-                                :
-                            </span>
-
-
-                            <!-- SECONDES -->
-
-                            <div class="demo-countdown-unit">
-
-                                <span
-                                    class="demo-countdown-value"
-                                    id="countdown-seconds"
-                                >
-                                    00
-                                </span>
-
-                                <span class="demo-countdown-label">
-                                    SECONDES
-                                </span>
-
-                            </div>
-
-
-                        </div>
-
-
-                        <div class="demo-countdown-footer">
-
-                            <span>
-                                RELEASE CHANNEL //
-                            </span>
-
-                            <strong>
-                                PUBLIC DEMO
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-
-                </section>
-
-
-                <!-- =================================================
-                     SECTION RELEASE
-                     Cachée jusqu'à la fin du compte à rebours
-                     ================================================= -->
-
-                <section
-                    class="demo-release-section"
-                    id="demo-release-section"
-                    hidden
-                    aria-labelledby="release-title"
-                >
-
-
-                    <div class="demo-section-heading">
-
-
-                        <div>
-
-                            <span class="demo-section-number">
-                                02 // RELEASE
-                            </span>
-
-                            <h2 id="release-title">
-                                SYSTEM ONLINE
-                            </h2>
-
-                        </div>
-
+                    <div class="demo-countdown-unit">
 
                         <span
-                            class="demo-section-status demo-status-online"
+                            class="demo-countdown-value"
+                            data-demo-hours
                         >
-                            ACCESS GRANTED
+                            00
                         </span>
 
+                        <span class="demo-countdown-label">
+                            HEURES
+                        </span>
 
                     </div>
 
 
-                    <!-- =================================================
-                         PANNEAU DE TÉLÉCHARGEMENT
-                         ================================================= -->
-
-                    <div class="demo-download-panel">
+                    <span class="demo-countdown-separator">
+                        :
+                    </span>
 
 
-                        <!-- =============================================
-                             VISUEL DE LA DÉMO
-                             ============================================= -->
+                    <!-- MINUTES -->
 
-                        <div
-                            class="demo-game-visual"
-                            id="demo-game-visual"
+                    <div class="demo-countdown-unit">
+
+                        <span
+                            class="demo-countdown-value"
+                            data-demo-minutes
                         >
+                            00
+                        </span>
 
-                            <div class="demo-game-visual-frame">
-
-
-                                <img
-                                    src="img/artwork/icon asteroid.jpg"
-                                    alt="ASTÉROÏD destroyer — visuel de la démo"
-                                    width="350"
-                                    height="350"
-                                >
-
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- =============================================
-                             INFORMATIONS DE TÉLÉCHARGEMENT
-                             ============================================= -->
-
-                        <div class="demo-download-info">
-
-
-                            <span class="demo-download-code">
-                                RELEASE // AD-DEMO-001
-                            </span>
-
-
-                            <h3>
-                                ASTÉROÏD destroyer
-                            </h3>
-
-
-                            <p class="demo-download-intro">
-                                La séquence de lancement est terminée.
-                                La démo des cinq premiers niveaux
-                                est maintenant disponible.
-                            </p>
-
-
-                            <div class="demo-download-data">
-
-
-                                <div>
-
-                                    <span>
-                                        VERSION
-                                    </span>
-
-                                    <strong>
-                                        DEMO
-                                    </strong>
-
-                                </div>
-
-
-                                <div>
-
-                                    <span>
-                                        CONTENT
-                                    </span>
-
-                                    <strong>
-                                        5 LEVELS
-                                    </strong>
-
-                                </div>
-
-
-                                <div>
-
-                                    <span>
-                                        ACCESS
-                                    </span>
-
-                                    <strong>
-                                        PUBLIC
-                                    </strong>
-
-                                </div>
-
-
-                            </div>
-
-
-                            <!--
-                                =================================================
-                                LIEN DE TÉLÉCHARGEMENT
-                                =================================================
-
-                                Le href sera remplacé lorsque le fichier
-                                de la démo sera disponible.
-
-                                Exemple futur :
-
-                                href="downloads/asteroid-destroyer-demo.zip"
-
-                                =================================================
-                            -->
-
-                            <a
-                                href="#"
-                                class="demo-download-button"
-                                id="demo-download-link"
-                                aria-label="Télécharger la démo d'ASTÉROÏD destroyer"
-                            >
-
-                                <span>
-                                    TÉLÉCHARGER
-                                </span>
-
-                                <strong>
-                                    DEMO
-                                </strong>
-
-                            </a>
-
-
-                            <span class="demo-download-note">
-                                DOWNLOAD CHANNEL // READY
-                            </span>
-
-
-                        </div>
-
+                        <span class="demo-countdown-label">
+                            MINUTES
+                        </span>
 
                     </div>
 
 
-                </section>
-
-
-                <!-- =================================================
-                     FOOTER TECHNIQUE
-                     ================================================= -->
-
-                <div class="demo-file-footer">
-
-
-                    <span>
-                        ASTÉROÏD DESTROYER
+                    <span class="demo-countdown-separator">
+                        :
                     </span>
 
 
-                    <span>
-                        AC-TEKPROD
-                    </span>
+                    <!-- SECONDES -->
 
+                    <div class="demo-countdown-unit">
 
-                    <span>
-                        DEMO SYSTEM // 2026
-                    </span>
+                        <span
+                            class="demo-countdown-value"
+                            data-demo-seconds
+                        >
+                            00
+                        </span>
 
+                        <span class="demo-countdown-label">
+                            SECONDES
+                        </span>
+
+                    </div>
 
                 </div>
 
+
+                <div class="demo-countdown-footer">
+
+                    <span>
+                        SYSTEM STATUS
+                    </span>
+
+                    <strong>
+                        AWAITING RELEASE
+                    </strong>
+
+                </div>
 
             </div>
 
         </section>
+
+
+        <!-- =================================================
+             SECTION TÉLÉCHARGEMENT
+             
+             CACHÉE JUSQU'À LA FIN DU COMPTE À REBOURS
+             ================================================= -->
+
+        <section
+            class="demo-release-section"
+            data-demo-release
+            hidden
+        >
+
+            <div class="demo-section-heading">
+
+                <div>
+
+                    <span class="demo-section-number">
+                        02 // DEMO ACCESS
+                    </span>
+
+                    <h2>
+                        Téléchargement
+                    </h2>
+
+                </div>
+
+                <span
+                    class="demo-section-status demo-status-online"
+                    data-demo-release-status
+                >
+                    DOWNLOAD AVAILABLE
+                </span>
+
+            </div>
+
+
+            <div class="demo-download-panel">
+
+
+                <!-- =========================================
+                     VISUEL DU JEU
+                     ========================================= -->
+
+                <div class="demo-game-visual">
+
+                    <div class="demo-game-visual-frame">
+
+                        <img
+                            src="img/artwork/icon asteroid.jpg"
+                            alt="ASTÉROÏD destroyer — illustration de la démo"
+                            width="350"
+                            height="350"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================================
+                     INFORMATIONS
+                     ========================================= -->
+
+                <div class="demo-download-info">
+
+                    <span class="demo-download-code">
+                        ACCESS // DEMO BUILD 01
+                    </span>
+
+                    <h3>
+                        ASTÉROÏD destroyer
+                    </h3>
+
+                    <p class="demo-download-intro">
+                        La séquence de lancement est terminée.
+                        La première démo jouable est maintenant
+                        disponible au téléchargement.
+                    </p>
+
+
+                    <div class="demo-download-data">
+
+                        <div>
+
+                            <span>
+                                VERSION
+                            </span>
+
+                            <strong>
+                                DEMO 01
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                CONTENT
+                            </span>
+
+                            <strong>
+                                5 NIVEAUX
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                STATUS
+                            </span>
+
+                            <strong>
+                                ONLINE
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--
+                        =====================================
+                        LIEN DE TÉLÉCHARGEMENT
+
+                        Le vrai lien sera ajouté plus tard.
+                        =====================================
+                    -->
+
+                    <a
+                        href="#"
+                        class="demo-download-button"
+                        id="demo-download-button"
+                        aria-label="Télécharger la démo d'ASTÉROÏD destroyer"
+                    >
+
+                        <strong>
+                            ↓
+                        </strong>
+
+                        TÉLÉCHARGER LA DÉMO
+
+                    </a>
+
+
+                    <span class="demo-download-note">
+                        DOWNLOAD LINK // PENDING FINAL BUILD
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER TECHNIQUE
+             ================================================= -->
+
+        <div class="demo-file-footer">
+
+            <span>
+                ASTEROID DESTROYER // AC-TEKPROD
+            </span>
+
+            <span>
+                SYSTEM // DEMO RELEASE
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
 
     </main>
 
