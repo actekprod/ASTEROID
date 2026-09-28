@@ -1,0 +1,1799 @@
+/* =========================================================
+   ASTÉROÏD DESTROYER
+   DEMO SYSTEM
+   demo.css
+
+   RELEASE COUNTDOWN // CLASSIFIED INTERFACE
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+
+    --demo-bg: #020509;
+    --demo-bg-soft: #050c12;
+    --demo-panel: rgba(4, 13, 20, 0.92);
+
+    --demo-cyan: #00e5ff;
+    --demo-cyan-bright: #55f3ff;
+    --demo-cyan-soft: rgba(0, 229, 255, 0.14);
+
+    --demo-blue: #008cff;
+    --demo-green: #43ff9a;
+    --demo-orange: #ff9d35;
+    --demo-red: #ff4141;
+
+    --demo-white: #e9fbff;
+    --demo-text: #8da8af;
+    --demo-muted: #547078;
+    --demo-dark: #16242a;
+
+    --demo-border: rgba(0, 229, 255, 0.18);
+    --demo-border-soft: rgba(0, 229, 255, 0.08);
+
+    --demo-font-mono:
+        "Courier New",
+        Courier,
+        monospace;
+
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+#demo-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 120px 0 110px;
+
+    overflow: hidden;
+
+    color: var(--demo-white);
+
+    background:
+
+        radial-gradient(
+            circle at 50% 8%,
+            rgba(0, 229, 255, 0.085),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 65%,
+            rgba(0, 140, 255, 0.035),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 10% 70%,
+            rgba(0, 229, 255, 0.025),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            180deg,
+            #020509 0%,
+            #050b11 48%,
+            #020509 100%
+        );
+
+}
+
+
+/* =========================================================
+   GRILLE TECHNIQUE
+   ========================================================= */
+
+#demo-page::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.22;
+
+    background-image:
+
+        linear-gradient(
+            rgba(0, 229, 255, 0.035) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0, 229, 255, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+
+}
+
+
+/* =========================================================
+   LIGNE DE SCAN
+   ========================================================= */
+
+#demo-page::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: -10%;
+
+    height: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 229, 255, 0.0),
+            rgba(0, 229, 255, 0.35),
+            rgba(0, 229, 255, 0.0),
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px rgba(0, 229, 255, 0.25);
+
+    animation:
+        demoScanLine 8s linear infinite;
+
+}
+
+
+@keyframes demoScanLine {
+
+    0% {
+        top: -5%;
+        opacity: 0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    92% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 105%;
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
+
+.demo-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(1400px, 92%);
+
+    margin: 0 auto;
+
+}
+
+
+/* =========================================================
+   CLASSIFICATION
+   ========================================================= */
+
+.demo-classification {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 25px;
+
+    padding: 12px 18px;
+
+    border-top: 1px solid var(--demo-border);
+
+    border-bottom: 1px solid var(--demo-border);
+
+    background:
+        rgba(0, 229, 255, 0.025);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.65rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+
+}
+
+
+.demo-classification-left,
+.demo-classification-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.demo-classification-left {
+
+    color: var(--demo-cyan);
+
+}
+
+
+.demo-classification-right {
+
+    color: var(--demo-muted);
+
+}
+
+
+.demo-classification-right strong {
+
+    color: var(--demo-orange);
+
+}
+
+
+/* =========================================================
+   STATUS DOT
+   ========================================================= */
+
+.demo-status-dot {
+
+    width: 7px;
+    height: 7px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--demo-orange);
+
+    box-shadow:
+
+        0 0 7px var(--demo-orange),
+
+        0 0 18px rgba(255, 157, 53, 0.45);
+
+    animation:
+        demoStatusPulse 2s ease-in-out infinite;
+
+}
+
+
+@keyframes demoStatusPulse {
+
+    0%,
+    100% {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        opacity: 0.45;
+
+        transform: scale(0.72);
+
+    }
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.demo-header {
+
+    position: relative;
+
+    margin-bottom: 70px;
+
+    padding: 55px 50px 45px;
+
+    border: 1px solid var(--demo-border);
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(0, 229, 255, 0.055),
+            rgba(255, 255, 255, 0.012)
+        );
+
+    box-shadow:
+
+        0 0 50px rgba(0, 229, 255, 0.035),
+
+        inset 0 0 40px rgba(0, 229, 255, 0.025);
+
+}
+
+
+/* =========================================================
+   COINS TECHNIQUES
+   ========================================================= */
+
+.demo-header::before,
+.demo-header::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 30px;
+    height: 30px;
+
+    border-color: var(--demo-cyan);
+
+    border-style: solid;
+
+}
+
+
+.demo-header::before {
+
+    top: -1px;
+    left: -1px;
+
+    border-width:
+        2px
+        0
+        0
+        2px;
+
+}
+
+
+.demo-header::after {
+
+    right: -1px;
+    bottom: -1px;
+
+    border-width:
+        0
+        2px
+        2px
+        0;
+
+}
+
+
+/* =========================================================
+   CODE
+   ========================================================= */
+
+.demo-file-code {
+
+    display: block;
+
+    margin-bottom: 22px;
+
+    color: var(--demo-muted);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.65rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.16em;
+
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.demo-eyebrow {
+
+    margin: 0 0 14px;
+
+    color: var(--demo-cyan);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.68rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.2em;
+
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.demo-header h1 {
+
+    margin: 0;
+
+    color: var(--demo-white);
+
+    font-size: clamp(4rem, 10vw, 8.5rem);
+
+    font-weight: 900;
+
+    line-height: 0.84;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+
+        0 0 18px rgba(0, 229, 255, 0.35),
+
+        0 0 55px rgba(0, 229, 255, 0.12);
+
+    animation:
+        demoTitlePulse 5s ease-in-out infinite;
+
+}
+
+
+@keyframes demoTitlePulse {
+
+    0%,
+    100% {
+
+        text-shadow:
+
+            0 0 18px rgba(0, 229, 255, 0.30),
+
+            0 0 55px rgba(0, 229, 255, 0.08);
+
+    }
+
+    50% {
+
+        text-shadow:
+
+            0 0 24px rgba(0, 229, 255, 0.45),
+
+            0 0 75px rgba(0, 229, 255, 0.14);
+
+    }
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.demo-header-description {
+
+    max-width: 850px;
+
+    margin: 20px 0 0;
+
+    color: #8ca7ad;
+
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+
+    font-weight: 600;
+
+    line-height: 1.6;
+
+    letter-spacing: 0.1em;
+
+}
+
+
+/* =========================================================
+   LIGNE
+   ========================================================= */
+
+.demo-header-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    margin-top: 35px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--demo-cyan),
+            rgba(0, 229, 255, 0.12),
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px rgba(0, 229, 255, 0.15);
+
+}
+
+
+/* =========================================================
+   RELEASE INFO
+   ========================================================= */
+
+.demo-release-info {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 20px;
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.58rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+
+}
+
+
+.demo-release-info span {
+
+    color: var(--demo-muted);
+
+}
+
+
+.demo-release-info strong {
+
+    color: var(--demo-orange);
+
+}
+
+
+/* =========================================================
+   TITRES DE SECTION
+   ========================================================= */
+
+.demo-section-heading {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 35px;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid var(--demo-border);
+
+}
+
+
+.demo-section-number {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--demo-cyan);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.65rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+
+}
+
+
+.demo-section-heading h2 {
+
+    margin: 0;
+
+    color: var(--demo-white);
+
+    font-size: clamp(1.7rem, 4vw, 2.8rem);
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+}
+
+
+.demo-section-status {
+
+    flex-shrink: 0;
+
+    padding: 8px 12px;
+
+    border: 1px solid var(--demo-border);
+
+    color: var(--demo-cyan);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.58rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+}
+
+
+/* =========================================================
+   PANNEAU DU COMPTE À REBOURS
+   ========================================================= */
+
+.demo-countdown-panel {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 30px 35px 25px;
+
+    border: 1px solid var(--demo-border);
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(0, 229, 255, 0.055),
+            transparent 50%
+        ),
+
+        rgba(2, 7, 11, 0.9);
+
+    box-shadow:
+
+        0 0 45px rgba(0, 229, 255, 0.035),
+
+        inset 0 0 60px rgba(0, 229, 255, 0.025);
+
+}
+
+
+/* =========================================================
+   COINS DU PANNEAU
+   ========================================================= */
+
+.demo-countdown-panel::before,
+.demo-countdown-panel::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    border-color: var(--demo-cyan);
+
+    border-style: solid;
+
+    opacity: 0.8;
+
+}
+
+
+.demo-countdown-panel::before {
+
+    top: -1px;
+    left: -1px;
+
+    border-width:
+        2px
+        0
+        0
+        2px;
+
+}
+
+
+.demo-countdown-panel::after {
+
+    right: -1px;
+    bottom: -1px;
+
+    border-width:
+        0
+        2px
+        2px
+        0;
+
+}
+
+
+/* =========================================================
+   TOPLINE
+   ========================================================= */
+
+.demo-countdown-topline {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid var(--demo-border-soft);
+
+    color: var(--demo-muted);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.58rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+
+}
+
+
+.demo-countdown-topline span:last-child {
+
+    color: var(--demo-cyan);
+
+}
+
+
+/* =========================================================
+   COMPTEUR
+   ========================================================= */
+
+.demo-countdown {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: clamp(12px, 2vw, 35px);
+
+    min-height: 310px;
+
+    padding: 45px 15px;
+
+}
+
+
+/* =========================================================
+   UNITÉ
+   ========================================================= */
+
+.demo-countdown-unit {
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: clamp(100px, 13vw, 190px);
+
+    padding: 20px 15px;
+
+    border: 1px solid var(--demo-border-soft);
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(0, 229, 255, 0.035),
+            rgba(0, 229, 255, 0.008)
+        );
+
+    box-shadow:
+
+        inset 0 0 25px rgba(0, 229, 255, 0.018);
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+/* ligne supérieure */
+
+.demo-countdown-unit::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -1px;
+    left: 20%;
+
+    width: 60%;
+    height: 1px;
+
+    background:
+        var(--demo-cyan);
+
+    box-shadow:
+        0 0 10px rgba(0, 229, 255, 0.5);
+
+    opacity: 0.5;
+
+}
+
+
+/* coin technique */
+
+.demo-countdown-unit::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 7px;
+    bottom: 7px;
+
+    width: 5px;
+    height: 5px;
+
+    border-right: 1px solid var(--demo-cyan);
+    border-bottom: 1px solid var(--demo-cyan);
+
+    opacity: 0.6;
+
+}
+
+
+/* =========================================================
+   VALEUR
+   ========================================================= */
+
+.demo-countdown-value {
+
+    display: block;
+
+    color: var(--demo-white);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: clamp(3rem, 8vw, 7rem);
+
+    font-weight: 900;
+
+    line-height: 0.9;
+
+    letter-spacing: 0.03em;
+
+    text-align: center;
+
+    text-shadow:
+
+        0 0 10px rgba(0, 229, 255, 0.55),
+
+        0 0 35px rgba(0, 229, 255, 0.16);
+
+    font-variant-numeric: tabular-nums;
+
+    animation:
+        demoNumberPulse 3s ease-in-out infinite;
+
+}
+
+
+@keyframes demoNumberPulse {
+
+    0%,
+    100% {
+
+        text-shadow:
+
+            0 0 10px rgba(0, 229, 255, 0.45),
+
+            0 0 30px rgba(0, 229, 255, 0.1);
+
+    }
+
+    50% {
+
+        text-shadow:
+
+            0 0 14px rgba(0, 229, 255, 0.75),
+
+            0 0 42px rgba(0, 229, 255, 0.2);
+
+    }
+
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.demo-countdown-label {
+
+    margin-top: 16px;
+
+    color: var(--demo-muted);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.58rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.17em;
+
+}
+
+
+/* =========================================================
+   SÉPARATEURS
+   ========================================================= */
+
+.demo-countdown-separator {
+
+    color: var(--demo-cyan);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: clamp(2rem, 5vw, 4.5rem);
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    opacity: 0.55;
+
+    text-shadow:
+        0 0 12px rgba(0, 229, 255, 0.4);
+
+    animation:
+        demoSeparatorBlink 1.5s ease-in-out infinite;
+
+}
+
+
+@keyframes demoSeparatorBlink {
+
+    0%,
+    45%,
+    100% {
+        opacity: 0.45;
+    }
+
+    50%,
+    95% {
+        opacity: 0.9;
+    }
+
+}
+
+
+/* =========================================================
+   FOOTER DU COMPTEUR
+   ========================================================= */
+
+.demo-countdown-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid var(--demo-border-soft);
+
+    color: var(--demo-muted);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.58rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+
+}
+
+
+.demo-countdown-footer strong {
+
+    color: var(--demo-green);
+
+}
+
+
+/* =========================================================
+   SECTION RELEASE
+   ========================================================= */
+
+.demo-release-section {
+
+    position: relative;
+
+    margin-top: 100px;
+
+}
+
+
+.demo-release-section[hidden] {
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   STATUS ONLINE
+   ========================================================= */
+
+.demo-status-online {
+
+    color: var(--demo-green);
+
+    border-color:
+        rgba(67, 255, 154, 0.3);
+
+    box-shadow:
+        0 0 15px rgba(67, 255, 154, 0.06);
+
+}
+
+
+/* =========================================================
+   PANNEAU DE TÉLÉCHARGEMENT
+   ========================================================= */
+
+.demo-download-panel {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(320px, 350px)
+        1fr;
+
+    gap: 0;
+
+    overflow: hidden;
+
+    border: 1px solid var(--demo-border);
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(0, 229, 255, 0.04),
+            rgba(0, 229, 255, 0.012)
+        );
+
+    box-shadow:
+
+        0 0 50px rgba(0, 229, 255, 0.035),
+
+        inset 0 0 50px rgba(0, 229, 255, 0.018);
+
+}
+
+
+/* =========================================================
+   ZONE VISUELLE
+   ========================================================= */
+
+.demo-game-visual {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 430px;
+
+    padding: 40px;
+
+    border-right: 1px solid var(--demo-border-soft);
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(0, 229, 255, 0.08),
+            transparent 68%
+        );
+
+}
+
+
+/* =========================================================
+   CADRE DE L'IMAGE
+   ========================================================= */
+
+.demo-game-visual-frame {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 350px;
+    height: 350px;
+
+    border: 1px solid rgba(0, 229, 255, 0.32);
+
+    background:
+        #02070b;
+
+    box-shadow:
+
+        0 0 10px rgba(0, 229, 255, 0.12),
+
+        0 0 35px rgba(0, 229, 255, 0.08),
+
+        inset 0 0 25px rgba(0, 229, 255, 0.05);
+
+    animation:
+        demoArtworkPulse 4s ease-in-out infinite;
+
+}
+
+
+/* =========================================================
+   GLOW MULTICOLORE
+   ========================================================= */
+
+.demo-game-visual-frame::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    z-index: -1;
+
+    border: 1px solid transparent;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            var(--demo-cyan),
+            var(--demo-blue),
+            var(--demo-green),
+            var(--demo-orange),
+            var(--demo-red),
+            var(--demo-cyan)
+        )
+
+        border-box;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+
+    mask-composite: exclude;
+
+    opacity: 0.8;
+
+    filter:
+        blur(1px);
+
+    animation:
+        demoArtworkColor 6s linear infinite;
+
+}
+
+
+/* halo externe */
+
+.demo-game-visual-frame::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -15px;
+
+    z-index: -2;
+
+    border-radius: 4px;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            var(--demo-cyan),
+            var(--demo-blue),
+            var(--demo-green),
+            var(--demo-orange),
+            var(--demo-red),
+            var(--demo-cyan)
+        );
+
+    opacity: 0.12;
+
+    filter:
+        blur(15px);
+
+    animation:
+        demoArtworkColor 6s linear infinite;
+
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.demo-game-visual-frame img {
+
+    display: block;
+
+    width: 350px;
+    height: 350px;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        saturate(0.92)
+        contrast(1.05);
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+
+}
+
+
+.demo-game-visual-frame:hover img {
+
+    transform: scale(1.025);
+
+    filter:
+        saturate(1.08)
+        contrast(1.08);
+
+}
+
+
+/* =========================================================
+   ANIMATIONS VISUELLES
+   ========================================================= */
+
+@keyframes demoArtworkPulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+        box-shadow:
+
+            0 0 10px rgba(0, 229, 255, 0.12),
+
+            0 0 35px rgba(0, 229, 255, 0.07),
+
+            inset 0 0 25px rgba(0, 229, 255, 0.04);
+
+    }
+
+    50% {
+
+        transform: scale(1.012);
+
+        box-shadow:
+
+            0 0 15px rgba(0, 229, 255, 0.25),
+
+            0 0 50px rgba(0, 229, 255, 0.13),
+
+            inset 0 0 35px rgba(0, 229, 255, 0.08);
+
+    }
+
+}
+
+
+@keyframes demoArtworkColor {
+
+    0% {
+
+        filter:
+            hue-rotate(0deg)
+            blur(1px);
+
+    }
+
+    50% {
+
+        filter:
+            hue-rotate(70deg)
+            blur(1px);
+
+    }
+
+    100% {
+
+        filter:
+            hue-rotate(360deg)
+            blur(1px);
+
+    }
+
+}
+
+
+/* =========================================================
+   INFORMATIONS DOWNLOAD
+   ========================================================= */
+
+.demo-download-info {
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 50px;
+
+}
+
+
+.demo-download-info::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 12%;
+
+    bottom: 12%;
+
+    width: 2px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            transparent,
+            var(--demo-cyan),
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px rgba(0, 229, 255, 0.25);
+
+}
+
+
+/* =========================================================
+   CODE DOWNLOAD
+   ========================================================= */
+
+.demo-download-code {
+
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: var(--demo-muted);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.6rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+}
+
+
+/* =========================================================
+   TITRE DOWNLOAD
+   ========================================================= */
+
+.demo-download-info h3 {
+
+    margin: 0 0 15px;
+
+    color: var(--demo-white);
+
+    font-size: clamp(1.7rem, 4vw, 3rem);
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 18px rgba(0, 229, 255, 0.18);
+
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.demo-download-intro {
+
+    max-width: 700px;
+
+    margin: 0;
+
+    color: #718990;
+
+    font-size: 0.82rem;
+
+    line-height: 1.85;
+
+}
+
+
+/* =========================================================
+   DONNÉES
+   ========================================================= */
+
+.demo-download-data {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    margin-top: 35px;
+
+    border-top: 1px solid var(--demo-border-soft);
+
+    border-bottom: 1px solid var(--demo-border-soft);
+
+}
+
+
+.demo-download-data > div {
+
+    padding: 18px 15px;
+
+    border-right: 1px solid var(--demo-border-soft);
+
+}
+
+
+.demo-download-data > div:last-child {
+
+    border-right: 0;
+
+}
+
+
+.demo-download-data span {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--demo-muted);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.55rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.13em;
+
+}
+
+
+.demo-download-data strong {
+
+    color: var(--demo-cyan);
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.1em;
+
+}
+
+
+/* =========================================================
+   BOUTON DOWNLOAD
+   ========================================================= */
+
+.demo-download-button {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    width: fit-content;
+
+    margin-top: 35px;
+
+    padding: 17px 28px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--demo-cyan);
+
+    color: var(--demo-white);
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(0, 229, 255, 0.09),
+            rgba(0, 229, 255, 0.025)
+        );
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.68rem;
+
+    font-weight: 900;
+
+    letter-spacing: 0.15em;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+
+    box-shadow:
+
+        0 0 12px rgba(0, 229, 255, 0.08),
+
+        inset 0 0 15px rgba(0, 229, 255, 0.025);
+
+    transition:
+
+        color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.demo-download-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: -100%;
+
+    width: 60%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(0, 229, 255, 0.25),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left 0.5s ease;
+
+}
+
+
+.demo-download-button:hover {
+
+    color: #ffffff;
+
+    background:
+        rgba(0, 229, 255, 0.1);
+
+    box-shadow:
+
+        0 0 18px rgba(0, 229, 255, 0.2),
+
+        0 0 40px rgba(0, 229, 255, 0.08),
+
+        inset 0 0 20px rgba(0, 229, 255, 0.05);
+
+    transform: translateY(-2px);
+
+}
+
+
+.demo-download-button:hover::before {
+
+    left: 140%;
+
+}
+
+
+.demo-download-button strong {
+
+    color: var(--demo-cyan);
+
+}
+
+
+/* =========================================================
+   NOTE DOWNLOAD
+   ========================================================= */
+
+.demo-download-note {
+
+    display: block;
+
+    margin-top: 13px;
+
+    color: #38555d;
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.52rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.13em;
+
+}
+
+
+/* =========================================================
+   FOOTER TECHNIQUE
+   ========================================================= */
+
+.demo-file-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 55px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--demo-border-soft);
+
+    color: #3d5b62;
+
+    font-family: var(--demo-font-mono);
+
+    font-size: 0.55rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITÉ
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #demo-page::after,
+    .demo-status-dot,
+    .demo-header h1,
+    .demo-countdown-value,
+    .demo-countdown-separator,
+    .demo-game-visual-frame,
+    .demo-game-visual-frame::before,
+    .demo-game-visual-frame::after {
+
+        animation: none;
+
+    }
+
+}
+
+
+/* =========================================================
+   FIN DEMO CSS
+   ========================================================= */
