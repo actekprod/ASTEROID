@@ -8889,6 +8889,220 @@
 
 
 
+/* =====================================================
+   ASTEROID // COMMUNICATIONS
+   RESPONSIVE : 1024 / 700 / 360
+   ===================================================== */
+/* ================================
+   TABLETTE / PETIT PC : 1024px
+   ================================ */
+
+@media screen and (max-width: 1024px) {
+
+  .communications-overlay {
+    padding: 18px;
+  }
+
+  .communications-panel {
+    width: min(100%, 430px);
+    max-height: calc(100dvh - 36px);
+  }
+
+  .comms-header {
+    padding: 16px;
+  }
+
+  .comms-content {
+    padding: 0 16px 14px;
+  }
+
+  .comms-video-frame {
+    max-width: 360px;
+  }
+
+  #communications-trigger {
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+
+/* ================================
+   TABLETTE / MOBILE : 700px
+   ================================ */
+
+@media screen and (max-width: 700px) {
+
+  .communications-overlay {
+    padding: 12px;
+    align-items: center;
+  }
+
+  .communications-panel {
+    width: min(100%, 400px);
+    max-height: calc(100dvh - 24px);
+    border-radius: 10px;
+  }
+
+  .comms-header {
+    padding: 14px;
+  }
+
+  .comms-header h2 {
+    font-size: 13px;
+  }
+
+  .comms-status {
+    padding: 9px 14px;
+    font-size: 9px;
+  }
+
+  .comms-content {
+    padding: 0 12px 12px;
+  }
+
+  .comms-video-heading {
+    font-size: 10px;
+  }
+
+  .comms-video-frame {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .comms-video-info {
+    padding-top: 10px;
+  }
+
+  .comms-footer {
+    padding: 10px 14px;
+    font-size: 7px;
+  }
+
+  #communications-trigger {
+    width: 54px;
+    height: 54px;
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+
+/* ================================
+   PETIT MOBILE : 360px
+   ================================ */
+
+@media screen and (max-width: 360px) {
+
+  .communications-overlay {
+    padding: 8px;
+  }
+
+  .communications-panel {
+    width: 100%;
+    max-height: calc(100dvh - 16px);
+    border-radius: 8px;
+  }
+
+  .comms-header {
+    padding: 11px;
+  }
+
+  .comms-eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .comms-header h2 {
+    font-size: 11px;
+    letter-spacing: .5px;
+  }
+
+  .comms-close {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .comms-status {
+    padding: 8px 11px;
+    font-size: 8px;
+  }
+
+  .comms-content {
+    padding: 0 10px 10px;
+  }
+
+  .comms-video-heading {
+    font-size: 9px;
+    letter-spacing: .5px;
+  }
+
+  .comms-video-frame {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .comms-video-title {
+    font-size: 9px;
+  }
+
+  .comms-video-subtitle {
+    font-size: 8px;
+  }
+
+  .comms-live {
+    font-size: 8px;
+  }
+
+  .comms-footer {
+    padding: 9px 10px;
+    font-size: 6px;
+    letter-spacing: .5px;
+  }
+
+  #communications-trigger {
+    width: 50px;
+    height: 50px;
+    right: 12px;
+    bottom: 12px;
+    font-size: 21px;
+  }
+}
+
+
+/* ================================
+   PETITE HAUTEUR D'ÉCRAN
+   ================================ */
+
+@media screen and (max-height: 700px) {
+
+  .communications-overlay {
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .communications-panel {
+    margin: auto 0;
+    max-height: calc(100dvh - 24px);
+  }
+
+  .comms-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .comms-content {
+    padding-bottom: 10px;
+  }
+}
+
+/* =========================================================
+   FIN RESPONSIVE — communication
+   ========================================================= */
+
+
+
 /* =========================================================
                     CORRECTION BUGS MOBILE
    ========================================================= */
