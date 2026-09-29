@@ -3,150 +3,356 @@
    MODULE : BOUTON FLOTTANT
    ========================================================= */
 
-#communications-trigger {
-    position: fixed;
-
-    right: 24px;
-    bottom: 24px;
-
-    width: 58px;
-    height: 58px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(0, 229, 255, 0.55);
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0, 229, 255, 0.18),
-            rgba(5, 10, 18, 0.96) 68%
-        );
-
-    color: #00e5ff;
-
-    font-size: 24px;
-
-    cursor: pointer;
-
-    z-index: 9999;
-
-    box-shadow:
-        0 0 12px rgba(0, 229, 255, 0.25),
-        inset 0 0 12px rgba(0, 229, 255, 0.08);
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
+:root {
+  --comms-cyan: #00e5ff;
+  --comms-bg: #050a12;
+  --comms-border: rgba(0, 229, 255, .35);
 }
 
+/* BOUTON FLOTTANT */
 
-/* ---------------------------------------------------------
-   SURVOL
-   --------------------------------------------------------- */
+#communications-trigger {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(0, 229, 255, .55);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 229, 255, .18),
+    rgba(5, 10, 18, .96) 68%
+  );
+
+  color: var(--comms-cyan);
+  font-size: 24px;
+  cursor: pointer;
+
+  box-shadow:
+    0 0 12px rgba(0, 229, 255, .25),
+    inset 0 0 12px rgba(0, 229, 255, .08);
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
 
 #communications-trigger:hover {
-
-    transform: scale(1.08);
-
-    border-color: rgba(0, 229, 255, 1);
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(0, 229, 255, 0.28),
-            rgba(5, 10, 18, 0.98) 68%
-        );
-
-    box-shadow:
-        0 0 18px rgba(0, 229, 255, 0.45),
-        0 0 35px rgba(0, 229, 255, 0.12),
-        inset 0 0 14px rgba(0, 229, 255, 0.12);
+  transform: scale(1.08);
+  border-color: var(--comms-cyan);
+  box-shadow:
+    0 0 18px rgba(0, 229, 255, .45),
+    0 0 35px rgba(0, 229, 255, .12);
 }
-
-
-/* ---------------------------------------------------------
-   ICÔNE
-   --------------------------------------------------------- */
 
 #communications-trigger span {
-
-    display: block;
-
-    line-height: 1;
-
-    filter:
-        drop-shadow(0 0 5px rgba(0, 229, 255, 0.8));
-
-    transition:
-        transform 0.25s ease,
-        filter 0.25s ease;
+  filter: drop-shadow(0 0 6px var(--comms-cyan));
+  transition: transform .25s ease;
 }
-
 
 #communications-trigger:hover span {
-
-    transform: scale(1.12);
-
-    filter:
-        drop-shadow(0 0 8px rgba(0, 229, 255, 1));
+  transform: scale(1.12);
 }
 
+#communications-trigger:focus-visible,
+.comms-close:focus-visible {
+  outline: 2px solid var(--comms-cyan);
+  outline-offset: 4px;
+}
 
-/* ---------------------------------------------------------
-   ANNEAU LUMINEUX
-   --------------------------------------------------------- */
+/* ANNEAU DU BOUTON */
 
 #communications-trigger::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: -5px;
-
-    border: 1px solid rgba(0, 229, 255, 0.12);
-
-    border-radius: 50%;
-
-    pointer-events: none;
-
-    animation:
-        communications-pulse 3s ease-in-out infinite;
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 1px solid rgba(0, 229, 255, .2);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: comms-pulse 3s ease-in-out infinite;
 }
 
-
-/* ---------------------------------------------------------
-   ANIMATION
-   --------------------------------------------------------- */
-
-@keyframes communications-pulse {
-
-    0%,
-    100% {
-        transform: scale(0.96);
-        opacity: 0.35;
-    }
-
-    50% {
-        transform: scale(1.08);
-        opacity: 0.8;
-    }
+@keyframes comms-pulse {
+  0%, 100% {
+    transform: scale(.96);
+    opacity: .35;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: .8;
+  }
 }
 
+/* VOILE */
 
-/* ---------------------------------------------------------
-   ACCESSIBILITÉ
-   --------------------------------------------------------- */
+.communications-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
 
-#communications-trigger:focus-visible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 
-    outline: 2px solid #00e5ff;
-    outline-offset: 4px;
+  background: rgba(0, 3, 10, .78);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
 }
 
+.communications-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* FENÊTRE */
+
+.communications-panel {
+  width: min(100%, 460px);
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+
+  color: #d9f7ff;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0, 229, 255, .09),
+      transparent 48%
+    ),
+    #050a12;
+
+  border: 1px solid var(--comms-border);
+  border-radius: 12px;
+
+  box-shadow:
+    0 0 35px rgba(0, 229, 255, .12),
+    0 20px 80px rgba(0, 0, 0, .65);
+
+  transform: translateY(24px) scale(.97);
+  opacity: 0;
+
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    opacity .3s ease;
+}
+
+.communications-overlay.is-open .communications-panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* EN-TÊTE */
+
+.comms-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 18px 14px;
+  border-bottom: 1px solid rgba(0, 229, 255, .15);
+}
+
+.comms-eyebrow {
+  color: var(--comms-cyan);
+  font: 10px/1.5 monospace;
+  letter-spacing: 2px;
+}
+
+.comms-header h2 {
+  margin: 5px 0 0;
+  font: 600 15px/1.4 monospace;
+  letter-spacing: 1px;
+}
+
+.comms-close {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--comms-border);
+  border-radius: 6px;
+  background: rgba(0, 229, 255, .05);
+  color: var(--comms-cyan);
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.comms-close:hover {
+  background: rgba(0, 229, 255, .18);
+  transform: rotate(90deg);
+}
+
+/* STATUT */
+
+.comms-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  color: #9bb0bf;
+  font: 10px monospace;
+  letter-spacing: 1px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00ff9d;
+  box-shadow: 0 0 8px #00ff9d;
+  animation: status-blink 1.8s infinite;
+}
+
+@keyframes status-blink {
+  50% { opacity: .35; }
+}
+
+.comms-channel {
+  margin-left: auto;
+  color: #536b7e;
+}
+
+/* CONTENU */
+
+.comms-content {
+  padding: 0 18px 16px;
+}
+
+.comms-video-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  color: var(--comms-cyan);
+  font: 11px monospace;
+  letter-spacing: 1px;
+}
+
+.comms-new {
+  padding: 4px 7px;
+  border: 1px solid rgba(0, 229, 255, .4);
+  border-radius: 3px;
+  font-size: 9px;
+}
+
+/* LECTEUR 360 x 640 */
+
+.comms-video-frame {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+
+  overflow: hidden;
+  border: 1px solid rgba(0, 229, 255, .3);
+  border-radius: 6px;
+  background: #000;
+
+  box-shadow: 0 0 20px rgba(0, 229, 255, .08);
+}
+
+.comms-video-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+/* INFOS VIDÉO */
+
+.comms-video-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-top: 13px;
+}
+
+.comms-video-title {
+  color: #e5faff;
+  font: 11px monospace;
+  letter-spacing: 1px;
+}
+
+.comms-video-subtitle {
+  margin-top: 5px;
+  color: #71899a;
+  font: 9px monospace;
+  letter-spacing: 1px;
+}
+
+.comms-live {
+  color: var(--comms-cyan);
+  font: 9px monospace;
+}
+
+/* PIED DE FENÊTRE */
+
+.comms-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 18px;
+  border-top: 1px solid rgba(0, 229, 255, .13);
+  color: #536b7e;
+  font: 8px monospace;
+  letter-spacing: 1px;
+}
+
+/* PETITS ÉCRANS */
+
+@media (max-width: 480px) {
+  .communications-overlay {
+    padding: 10px;
+  }
+
+  .communications-panel {
+    max-height: calc(100dvh - 20px);
+  }
+
+  .comms-header {
+    padding: 14px;
+  }
+
+  .comms-content {
+    padding: 0 12px 12px;
+  }
+
+  .comms-video-frame {
+    max-width: min(100%, 360px);
+  }
+}
+
+/* ACCESSIBILITÉ */
+
+@media (prefers-reduced-motion: reduce) {
+  #communications-trigger,
+  #communications-trigger span,
+  .communications-overlay,
+  .communications-panel,
+  .comms-close {
+    transition: none;
+  }
+
+  #communications-trigger::before,
+  .status-dot {
+    animation: none;
+  }
+}
