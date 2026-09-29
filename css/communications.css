@@ -316,30 +316,6 @@
   letter-spacing: 1px;
 }
 
-/* PETITS ÉCRANS */
-
-@media (max-width: 480px) {
-  .communications-overlay {
-    padding: 10px;
-  }
-
-  .communications-panel {
-    max-height: calc(100dvh - 20px);
-  }
-
-  .comms-header {
-    padding: 14px;
-  }
-
-  .comms-content {
-    padding: 0 12px 12px;
-  }
-
-  .comms-video-frame {
-    max-width: min(100%, 360px);
-  }
-}
-
 /* ACCESSIBILITÉ */
 
 @media (prefers-reduced-motion: reduce) {
