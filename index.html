@@ -1472,15 +1472,102 @@
            CENTRE DE COMMUNICATIONS MODULE : BOUTON FLOTTANT 
          ===================================================== -->
 
+
+<!-- ASTEROID // COMMUNICATIONS -->
+
 <button
-id="communications-trigger"
-type="button"
-aria-label="Ouvrir le centre de communications"
-title="Centre de communications"
-
-<span>📡</span>
-
+  id="communications-trigger"
+  type="button"
+  aria-label="Ouvrir le centre de communications"
+  aria-controls="communications-panel"
+  aria-expanded="false"
+>
+  <span>📡</span>
 </button>
+
+<div
+  id="communications-overlay"
+  class="communications-overlay"
+  aria-hidden="true"
+>
+  <section
+    id="communications-panel"
+    class="communications-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="communications-title"
+    tabindex="-1"
+  >
+    <header class="comms-header">
+      <div>
+        <div class="comms-eyebrow">
+          ASTEROID // NETWORK
+        </div>
+        <h2 id="communications-title">
+          CENTRE DE COMMUNICATIONS
+        </h2>
+      </div>
+
+      <button
+        id="communications-close"
+        class="comms-close"
+        type="button"
+        aria-label="Fermer"
+      >✕</button>
+    </header>
+
+    <div class="comms-status">
+      <span class="status-dot"></span>
+      SIGNAL ACTIF
+      <span class="comms-channel">
+        CHANNEL 001
+      </span>
+    </div>
+
+    <div class="comms-content">
+      <div class="comms-video-heading">
+        <span>TRANSMISSION DU JOUR</span>
+        <span class="comms-new">NEW</span>
+      </div>
+
+      <div class="comms-video-frame">
+        <video
+          id="comms-video"
+          controls
+          playsinline
+          preload="metadata"
+          poster="/assets/video-du-jour.jpg"
+        >
+          <source
+            id="comms-video-source"
+            src="/videos/video-du-jour.mp4"
+            type="video/mp4"
+          >
+          Ton navigateur ne prend pas en charge la vidéo.
+        </video>
+      </div>
+
+      <div class="comms-video-info">
+        <div>
+          <div class="comms-video-title">
+            TRANSMISSION // 001
+          </div>
+          <div class="comms-video-subtitle">
+            MESSAGE DU JOUR
+          </div>
+        </div>
+        <span class="comms-live">
+          ● ONLINE
+        </span>
+      </div>
+    </div>
+
+    <footer class="comms-footer">
+      <span>ASTEROID SYSTEMS</span>
+      <span>END OF TRANSMISSION_</span>
+    </footer>
+  </section>
+</div>
 
 
     
