@@ -13,22 +13,29 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  function openCommunications() {
-    overlay.classList.add("is-open");
-    overlay.setAttribute("aria-hidden", "false");
-    trigger.setAttribute("aria-expanded", "true");
-    document.body.style.overflow = "hidden";
-    panel.focus();
-  }
+ function openCommunications() {
+  overlay.classList.add("is-open");
+  overlay.setAttribute("aria-hidden", "false");
+  trigger.setAttribute("aria-expanded", "true");
+  document.body.style.overflow = "hidden";
 
-  function closeCommunications() {
-    overlay.classList.remove("is-open");
-    overlay.setAttribute("aria-hidden", "true");
-    trigger.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
-    video.pause();
-    trigger.focus();
-  }
+  panel.focus();
+
+  video.currentTime = 0;
+  video.play();
+}
+
+function closeCommunications() {
+  overlay.classList.remove("is-open");
+  overlay.setAttribute("aria-hidden", "true");
+  trigger.setAttribute("aria-expanded", "false");
+  document.body.style.overflow = "";
+
+  video.pause();
+  video.currentTime = 0;
+
+  trigger.focus();
+}
 
   trigger.addEventListener("click", openCommunications);
   closeButton.addEventListener("click", closeCommunications);
