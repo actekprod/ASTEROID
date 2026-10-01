@@ -740,22 +740,19 @@ setTimeout(() => {
 
         if (!text) return;
 
-        const rect = text.getBoundingClientRect();
-
-        text.style.position = "fixed";
-        text.style.left = `${rect.left}px`;
-        text.style.top = `${rect.top}px`;
-        text.style.width = `${rect.width}px`;
-        text.style.margin = "0";
-
-        text.style.transform = "none";
-        text.style.animation = "none";
+        text.style.animationPlayState = "paused";
         text.style.transition = "none";
 
     });
 
 }, INTRO_DURATION - 2000);
 
+
+
+
+
+
+   
 
 
     connectionPhase();
