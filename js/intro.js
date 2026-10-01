@@ -725,19 +725,22 @@ function startIntro() {
 
     startedAt =
         Date.now();
-   setTimeout(() => {
+  setTimeout(() => {
 
     if (closed) return;
 
-    const brand =
-        document.querySelector(".intro-brand");
+    const brand = document.querySelector(".intro-brand");
 
     if (!brand) return;
 
-    brand.style.animationPlayState = "paused";
+    const computed = getComputedStyle(brand);
+
+    brand.style.transform = computed.transform;
+    brand.style.animation = "none";
     brand.style.transition = "none";
 
 }, INTRO_DURATION - 2000);
+
    
     connectionPhase();
     phases.forEach(
