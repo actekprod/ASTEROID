@@ -1017,7 +1017,8 @@
             0;
 
         transform:
-            translate(-50%, -50%);
+          translate(-50%, -50%) !important;
+
 
         display:
             flex;
