@@ -725,50 +725,15 @@ function startIntro() {
 
     startedAt =
         Date.now();
-
-setTimeout(() => {
-
-    if (closed) return;
-
-    const texts = [
-        document.querySelector(".intro-logo-subtitle"),
-        document.querySelector(".intro-brand h1"),
-        document.querySelector(".intro-logo-name")
-    ];
-
-    texts.forEach((text) => {
-
-        if (!text) return;
-
-        text.style.animationPlayState = "paused";
-        text.style.transition = "none";
-
-    });
-
-}, INTRO_DURATION - 2000);
-
-
-
-
-
-
-   
-
-
     connectionPhase();
-
-
     phases.forEach(
         ({ time, state }) => {
-
             if (time === 0) {
                 return;
             }
-
             const timer =
                 setTimeout(
                     () => {
-
                         setState(
                             state
                         );
