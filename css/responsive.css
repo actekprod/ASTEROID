@@ -1016,8 +1016,8 @@
         padding:
             0;
 
-        transform:
-          translate(-50%, -50%) !important;
+       transform:
+          translate(-50%, -50%);
 
 
         display:
