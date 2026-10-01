@@ -726,7 +726,7 @@ function startIntro() {
     startedAt =
         Date.now();
 
-   setTimeout(() => {
+setTimeout(() => {
 
     if (closed) return;
 
@@ -740,6 +740,15 @@ function startIntro() {
 
         if (!text) return;
 
+        const rect = text.getBoundingClientRect();
+
+        text.style.position = "fixed";
+        text.style.left = `${rect.left}px`;
+        text.style.top = `${rect.top}px`;
+        text.style.width = `${rect.width}px`;
+        text.style.margin = "0";
+
+        text.style.transform = "none";
         text.style.animation = "none";
         text.style.transition = "none";
 
@@ -747,16 +756,6 @@ function startIntro() {
 
 }, INTRO_DURATION - 2000);
 
-
-       INTRO_SOUND.currentTime = 0;
-
-       INTRO_SOUND.play();
-
-
-
-    setState(
-        "state-connect"
-    );
 
 
     connectionPhase();
