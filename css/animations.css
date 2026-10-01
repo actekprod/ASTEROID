@@ -7420,6 +7420,10 @@ body.intro-active {
             blur(0);
     }
 }
+/* TEST — bloque le déplacement horizontal du branding final */
+.state-complete .intro-brand {
+    transform: translateX(0) !important;
+}
 
 /* =========================================================
     OUF FIN DU CSS intro
