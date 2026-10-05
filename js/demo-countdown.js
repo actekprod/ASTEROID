@@ -3,7 +3,7 @@
    DEMO COUNTDOWN SYSTEM
 
    RELEASE:
-   05 OCTOBRE 2026 — 18:00
+   07 OCTOBRE 2026 — 18:00
    EUROPE/PARIS
    ========================================================= */
 
