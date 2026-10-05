@@ -35,7 +35,7 @@ const DEMO_RELEASE = {
 
     year: 2026,
     month: 10,
-    day: 5,
+    day: 7,
 
     hour: 18,
     minute: 0,
