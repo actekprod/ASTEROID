@@ -3,7 +3,7 @@
    DEMO COUNTDOWN SYSTEM
 
    RELEASE:
-   07 OCTOBRE 2026 — 18:00
+   15 OCTOBRE 2026 — 18:00
    EUROPE/PARIS
    ========================================================= */
 
@@ -35,7 +35,7 @@ const DEMO_RELEASE = {
 
     year: 2026,
     month: 10,
-    day: 7,
+    day: 15,
 
     hour: 18,
     minute: 0,
