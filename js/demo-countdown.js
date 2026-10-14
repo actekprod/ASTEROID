@@ -22,7 +22,7 @@
  * Pour le site final, laisser false.
  */
 
-const DEMO_TEST_MODE = false;
+const DEMO_TEST_MODE = true;
 
 const DEMO_TEST_SECONDS = 15;
 
